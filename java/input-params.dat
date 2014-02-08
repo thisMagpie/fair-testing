@@ -1,0 +1,5 @@
+# This file holds the input data to use for the first most simple test.
+
+Number of Trials 100
+Predicted Score = 150
+Error = 0.02
