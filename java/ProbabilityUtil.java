@@ -1,5 +1,3 @@
-import java.util.Random;
-
 /**
  * ProbabilityUtil.java
  * ==============
@@ -20,6 +18,8 @@ import java.util.Random;
  * You should have received a copy of the GNU General Public License
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
+import java.util.Random;
+
 public class ProbabilityUtil{
 
     /**

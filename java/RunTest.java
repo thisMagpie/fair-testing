@@ -1,4 +1,3 @@
-
 /**
  * RunTest.java
  * ==============
@@ -19,12 +18,20 @@
  * You should have received a copy of the GNU General Public License
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
+
+import java.util.Scanner;
+import java.io.*;
+
 public class RunTest{
 
-    public static void main(String[] argsv){
-        double error = ProbabilityUtil.percentErrorOnEstimate(0.02, 150);
+    public static void main(String[] argsv) throws IOException, FileNotFoundException {
+        Scanner scanEach = new Scanner(new BufferedReader(new FileReader("input-params.dat")));
+        int numberOfTrials = IOUtil.skipToInt(scanEach);
+        int estimatedScore = IOUtil.skipToInt(scanEach);
+        double estimatedErrorOnScore = IOUtil.skipToDouble(scanEach);
+        double error = ProbabilityUtil.percentErrorOnEstimate(estimatedErrorOnScore , estimatedScore );
         System.out.println(error);
-        double[] predictedScore = ProbabilityUtil.predictedScore(error, 100, 150);
+        double[] predictedScore = ProbabilityUtil.predictedScore(error, numberOfTrials, estimatedScore);
         for (int i=0; i< 100; i++){
             System.out.println(predictedScore[i]);
         }
