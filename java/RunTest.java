@@ -25,15 +25,25 @@ import java.io.*;
 public class RunTest{
 
     public static void main(String[] argsv) throws IOException, FileNotFoundException {
-        Scanner scanEach = new Scanner(new BufferedReader(new FileReader("input-params.dat")));
+        Scanner scanEach = new Scanner(new BufferedReader(new FileReader("input/input-params.dat")));
+        PrintWriter printToFile = new PrintWriter("output/one/raw-output.dat");
         int numberOfTrials = IOUtil.skipToInt(scanEach);
         int estimatedScore = IOUtil.skipToInt(scanEach);
-        double estimatedErrorOnScore = IOUtil.skipToDouble(scanEach);
-        double error = ProbabilityUtil.percentErrorOnEstimate(estimatedErrorOnScore , estimatedScore );
-        System.out.println(error);
-        double[] predictedScore = ProbabilityUtil.predictedScore(error, numberOfTrials, estimatedScore);
-        for (int i=0; i< 100; i++){
-            System.out.println(predictedScore[i]);
+        double estimatedError = IOUtil.skipToDouble(scanEach);
+        double errorOnEach = ProbabilityUtil.percentErrorEstimate(estimatedError, estimatedScore);
+        double[] rawResult = ProbabilityUtil.predictedScores(errorOnEach, numberOfTrials, estimatedScore);
+        printPredictedScores(rawResult);
+        writeFile(printToFile, rawResult);
+    }
+    public static void printPredictedScores(double[] data) {
+         for (int i=1; i < data.length + 1; i++){
+            System.out.println(i + " " + data[i - 1]);
         }
+    }
+    public static void writeFile(PrintWriter printToFile, double[] data){
+        for (int i = 1; i< data.length + 1; i++){
+            printToFile.write(i + " " + data[i - 1]+"\r\n");
+        }
+        printToFile.close();
     }
 }
