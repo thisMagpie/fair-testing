@@ -2,8 +2,8 @@
  * StatsUtil.java
  * ==============
  *
- * This file is a part of a program which serves as a utility for data analysis
- * of experimental data
+ * This file is a part of a program which serves as a utility for prediction
+ * and data analysis of experimental and simulated data
  *
  * Copyright (C) 2012-2014  Magdalen Berns <m.berns@sms.ed.ac.uk>
  *
@@ -57,11 +57,11 @@ public class StatsUtil{
 
     /**
      * covariance
-     *                   Works out the fit of the data
+     *                  Works out the fit of the data
      * @param xVariance
-     *                   Array of doubles holding the x variance values
+     *                  Array of doubles holding the x variance values
      * @param yVariance
-     *                   Array of doubles holding the y variance values
+     *                  Array of doubles holding the y variance values
      * @param x
      *                  Array of doubles holding the x values
      * @param y
@@ -355,8 +355,4 @@ public class StatsUtil{
         }
         return convolved;
     }
-
-	public static void main(String argsv){
-
-	}
 }
