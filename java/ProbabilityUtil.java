@@ -37,7 +37,7 @@ public class ProbabilityUtil{
     }
 
     /**
-     * predictedError
+     * predictedScore
      *                          Work out the absolute predicted deviation from each score result
      *                          based on the multiplier which is the predicted error on the data
      *                          which is the error estimate and the number of trials
@@ -50,7 +50,7 @@ public class ProbabilityUtil{
      *                          The predicted scores of a sample taken from the total as a double
                                 plus or minus the error estimate on them.
      */
-    public static double[] predictedError(double multiplier, int numberTrials, int expectedResult){
+    public static double[] predictedScore(double multiplier, int numberTrials, int expectedResult){
         Random random = new Random();
         double[] temp = new double[numberTrials];
         for (int i = 0; i < numberTrials; i++){

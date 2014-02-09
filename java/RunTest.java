@@ -24,9 +24,9 @@ public class RunTest{
     public static void main(String[] argsv){
         double error = ProbabilityUtil.percentErrorOnEstimate(0.02, 150);
         System.out.println(error);
-        double[] errorOnEach = ProbabilityUtil.predictedError(error, 100, 150);
+        double[] predictedScore = ProbabilityUtil.predictedScore(error, 100, 150);
         for (int i=0; i< 100; i++){
-            System.out.println(errorOnEach[i]);
+            System.out.println(predictedScore[i]);
         }
     }
 }
