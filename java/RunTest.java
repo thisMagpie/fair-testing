@@ -32,18 +32,7 @@ public class RunTest{
         double estimatedError = IOUtil.skipToDouble(scanEach);
         double errorOnEach = ProbabilityUtil.percentErrorEstimate(estimatedError, estimatedScore);
         double[] rawResult = ProbabilityUtil.predictedScores(errorOnEach, numberOfTrials, estimatedScore);
-        printPredictedScores(rawResult);
-        writeFile(printToFile, rawResult);
-    }
-    public static void printPredictedScores(double[] data) {
-         for (int i=1; i < data.length + 1; i++){
-            System.out.println(i + " " + data[i - 1]);
-        }
-    }
-    public static void writeFile(PrintWriter printToFile, double[] data){
-        for (int i = 1; i< data.length + 1; i++){
-            printToFile.write(i + " " + data[i - 1]+"\r\n");
-        }
-        printToFile.close();
+        ArrayIOUtil.printDoubles(rawResult);
+        ArrayIOUtil.writeDoubles(printToFile, rawResult);
     }
 }
