@@ -20,6 +20,7 @@
  */
 
 import java.io.*;
+import java.util.Scanner;
 
 public class ArrayIOUtil extends IOUtil{
 
@@ -29,10 +30,33 @@ public class ArrayIOUtil extends IOUtil{
         }
     }
 
-    public static void writeDoubles(PrintWriter printToFile, double[] data){
+    public static void writeDoubles(PrintWriter toFile, double[] data){
         for (int i = 1; i< data.length + 1; i++){
-            printToFile.write(i + " " + data[i - 1]+"\r\n");
+            toFile.write(i + " " + data[i - 1]+"\r\n");
         }
-        printToFile.close();
+        toFile.close();
+    }
+
+    public static void writeDoubles(PrintWriter toFile, double[][] data){
+        for(int i=0; i<data.length;i++){
+            toFile.printf("%2.5f %2.5f", data[i][0], data[i][1]);
+            toFile.println();
+        }
+    }
+
+    public static double[] readDoubles(Scanner scanned, int length){
+        double[] data=new double[length];
+        for (int i=0;i<data.length;i++) data[i] = IOUtil.skipToDouble(scanned);
+        return data;
+    }
+
+    public static double[][] readDoubles(Scanner scanned, int length, int numberOfColumns){
+        double[][] data = new double[length][numberOfColumns];
+        for (int i=0;i<data.length;i++){
+            for (int j=0;j<data[0].length;j++){
+                data[i][j] = IOUtil.skipToDouble(scanned); //TODO check
+            }
+        }
+        return data;
     }
 }

@@ -5,7 +5,7 @@
  * This file is a part of a program which serves as a utility for prediction
  * and data analysis of experimental and simulated data
  *
- * Copyright (C) 2014  Magdalen Berns <m.berns@sms.ed.ac.uk>
+ * Copyright (C) 2014 Magdalen Berns <m.berns@sms.ed.ac.uk>
  *
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -27,11 +27,15 @@ public class RunTest{
     public static void main(String[] argsv) throws IOException, FileNotFoundException {
         Scanner scanEach = new Scanner(new BufferedReader(new FileReader("input/input-params.dat")));
         PrintWriter printToFile = new PrintWriter("output/one/raw-output.dat");
+
         int numberOfTrials = IOUtil.skipToInt(scanEach);
         int estimatedScore = IOUtil.skipToInt(scanEach);
+
         double estimatedError = IOUtil.skipToDouble(scanEach);
+
         double errorOnEach = ProbabilityUtil.percentErrorEstimate(estimatedError, estimatedScore);
         double[] rawResult = ProbabilityUtil.predictedScores(errorOnEach, numberOfTrials, estimatedScore);
+
         ArrayIOUtil.printDoubles(rawResult);
         ArrayIOUtil.writeDoubles(printToFile, rawResult);
     }
