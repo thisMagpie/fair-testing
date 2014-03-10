@@ -52,16 +52,17 @@ public class RunTest{
                 count += 1;
             }
         }
+       // ArrayIOUtil.writeDoubles(printGaussianToFile, gaussian);
+       spread(count, gaussianRaw);
+    }
+    public static double spread(int count, double data)
         double[] gaussian = new double[count];
         count = 0;
-        for (int i = 1; i < gaussianRaw.length + 1; i++){
-            if (gaussianRaw[i - 1] > 0.0) {
-                gaussian[count] = gaussianRaw[i - 1];
+        for (int i = 1; i < data.length + 1; i++){
+            if (data[i - 1] > 0.0) {
+                gaussian[count] = data[i - 1];
                 System.out.println(count + " " + gaussian[count]); // TODO sort
                 count += 1;
-            }
         }
-        
-       // ArrayIOUtil.writeDoubles(printGaussianToFile, gaussian);
     }
 }

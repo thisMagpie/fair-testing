@@ -59,4 +59,8 @@ public class ArrayIOUtil extends IOUtil{
         }
         return data;
     }
+
+    public static int[][] initArray(int length){
+        return new int[length][length];
+    }
 }
