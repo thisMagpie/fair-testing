@@ -52,10 +52,9 @@ public class RunTest{
                 count += 1;
             }
         }
-       // ArrayIOUtil.writeDoubles(printGaussianToFile, gaussian);
-       spread(count, gaussianRaw);
+        spread(count, gaussianRaw);
     }
-    public static void spread(int count, double[] data){
+    public static double[] spread(int count, double[] data){
         double[] gaussian = new double[count];
         count = 0;
         for (int i = 1; i < data.length + 1; i++){
@@ -65,6 +64,6 @@ public class RunTest{
                 count += 1;
             }
         }
-        
+        return gaussian;
     }
 }
