@@ -39,6 +39,7 @@ public class RunTest{
         double variance = StatsUtil.variance(rawResult, mean);
 
         double[] gaussianRaw = StatsUtil.gaussian(numberOfTrials, variance, mean);
+        ArrayIOUtil.writeDoubles(new PrintWriter("output/one/gaussian.dat"), gaussianRaw);
         double sum = 0.0;
         for(int i = 1; i < gaussianRaw.length; i++) {
               System.out.println(i + " " + gaussianRaw[i]);
