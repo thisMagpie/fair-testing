@@ -32,7 +32,7 @@ public class StatsUtil{
      */
     public static double mean(double[] data){
         double sum = 0.0;
-        for(int i=0;i< data.length; i++) sum += data[i];
+        for(int i = 0; i < data.length; i++) sum += data[i];
         return sum / (double) data.length - 1;
     }
 
@@ -50,7 +50,7 @@ public class StatsUtil{
      *                  The covariance as a double giving the fit difference of least squares
      */
     public static double covariance(double xVariance, double yVariance, double[][] data){
-        double covariance=0.0;
+        double covariance = 0.0;
         for (int i = 0; i < data.length; i++) covariance += (data[i][0] - xVariance) * (data[i][1] - yVariance);
         return covariance;
     }
@@ -70,8 +70,8 @@ public class StatsUtil{
      * @return
      *                  The covariance as a double giving the fit difference of least squares
      */
-    public static double covariance(double xVariance, double yVariance, double[] x, double[] y){
-        double covariance=0.0;
+    public static double covariance(double xVariance, double yVariance, double[] x, double[] y) {
+        double covariance = 0.0;
         for (int i = 0; i < x.length; i++) covariance += (x[i] - xVariance) * (y[i] - yVariance);
         return covariance;
     }
@@ -85,12 +85,12 @@ public class StatsUtil{
      *          The mean of the data
      *
      * @return
-     *          The sum of all the variances
+     *          The sum of all the variances as a double
      */
     public static double variance(double[] data, double mean){
         double variance = 0.0;
-        for (int i = 0; i < data.length; i++) variance += Math.pow((data[i] - mean),2);
-        return variance/data.length -1;
+        for (int i = 0; i < data.length; i++) variance += Math.pow((data[i] - mean), 2);
+        return variance;
     }
 
     /**
@@ -105,8 +105,8 @@ public class StatsUtil{
      *                   The the standard deviation of least squares fit as a double
      */
     public static double standardDeviation(double variance, int n){
-        double stdDev= 0.0;
-        if(n > 0) stdDev = Math.sqrt(variance / n);
+        double stdDev = 0.0;
+        if(n > 0) stdDev = Math.sqrt(variance) / n;
         return stdDev;
     }
 

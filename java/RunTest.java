@@ -26,44 +26,24 @@ public class RunTest{
 
     public static void main(String[] argsv) throws IOException, FileNotFoundException {
         Scanner scanEach = new Scanner(new BufferedReader(new FileReader("input/input-params.dat")));
-        PrintWriter printRawDataToFile = new PrintWriter("output/one/raw-output.dat");
 
         int numberOfTrials = IOUtil.skipToInt(scanEach);
         int estimatedScore = IOUtil.skipToInt(scanEach);
 
         double estimatedError = IOUtil.skipToDouble(scanEach);
-
         double errorOnEach = ProbabilityUtil.percentErrorEstimate(estimatedError, estimatedScore);
+
         double[] rawResult = ProbabilityUtil.predictedScores(errorOnEach, numberOfTrials, estimatedScore);
-
-        ArrayIOUtil.writeDoubles(printRawDataToFile, rawResult);
-
-        // Gaussian Stuff
-        PrintWriter printGaussianToFile = new PrintWriter("output/one/gaussian.dat");
 
         double mean = StatsUtil.mean(rawResult);
         double variance = StatsUtil.variance(rawResult, mean);
+
         double[] gaussianRaw = StatsUtil.gaussian(numberOfTrials, variance, mean);
-
-        int count = 0;
-
-        for(int i=0; i < gaussianRaw.length; i++){
-            if (gaussianRaw[i] > 0.0) {
-                count += 1;
-            }
+        double sum = 0.0;
+        for(int i = 1; i < gaussianRaw.length; i++) {
+              System.out.println(i + " " + gaussianRaw[i]);
+              sum+=gaussianRaw[i];
         }
-        spread(count, gaussianRaw);
-    }
-    public static double[] spread(int count, double[] data){
-        double[] gaussian = new double[count];
-        count = 0;
-        for (int i = 1; i < data.length + 1; i++){
-            if (data[i - 1] > 0.0) {
-                gaussian[count] = data[i - 1];
-                System.out.println(count + " " + gaussian[count]); // TODO sort
-                count += 1;
-            }
-        }
-        return gaussian;
+        System.out.println("\nSum = " + sum + "\n");
     }
 }
