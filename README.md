@@ -1,13 +1,12 @@
 fair-testing
 ============
 
-## To run java file
+## To run java
 
 The entries are still hard coded for now so all that is needed is to compile
 
 ```
 cd java
-
 javac *.java
 ```
 
@@ -23,6 +22,5 @@ These reside in the java/output/one folder for the first test which is a single 
 
 ```
 cd java/output
-
 pdflatex output-datafile.tex
 ```
