@@ -34,6 +34,7 @@ public class RunTest{
         double errorOnEach = ProbabilityUtil.percentErrorEstimate(estimatedError, estimatedScore);
 
         double[] rawResult = ProbabilityUtil.predictedScores(errorOnEach, numberOfTrials, estimatedScore);
+        ArrayIOUtil.writeDoubles(new PrintWriter("output/one/raw-output.dat"), rawResult);
 
         double mean = StatsUtil.mean(rawResult);
         double variance = StatsUtil.variance(rawResult, mean);

@@ -5,11 +5,11 @@
 
 \begin{document}
 \begin{tikzpicture}
-\begin{axis}[legend pos = north east, /pgf/number format/.cd, , ylabel={Score}, xlabel={Sample Number}, xmin=0, xmax=100, ymin=0.0, ymax=100]
+\begin{axis}[legend pos = north east, /pgf/number format/.cd, , ylabel={Score}, xlabel={Sample Number}, xmin=0, xmax=100, ymin=0.0, ymax=0.1]
 
     \addplot[no markers,color=blue]
     table [x index = 0, y index= 1]
-    {one/raw-output.dat};
+    {one/gaussian.dat};
 
 \end{axis}
 \end{tikzpicture}
