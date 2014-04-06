@@ -301,7 +301,7 @@ public class StatsUtil{
         return Math.sqrt(stdVariance/ xVariance);
     }
 
-    public static double errorFit(double stdFit){ // TODO Check: forgotten what this is about!?!
+    public static double errorFit(double stdFit){
         return Math.sqrt(stdFit);
     }
 
@@ -322,7 +322,7 @@ public class StatsUtil{
         double tempGaussian= 0.0;
 
         for (int i=0; i<numberOfSamples; i++){
-            gaussian[i] = Math.sqrt(1/(period)* variance)*(Math.exp(-(i-mean)*(i-mean)/(2 * variance)));
+            gaussian[i] = Math.sqrt(1/(period) * variance)*(Math.exp(-Math.pow((i-mean), 2) / (2 * variance)));
             tempGaussian += gaussian[i];
         }
         

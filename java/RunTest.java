@@ -28,18 +28,18 @@ public class RunTest{
         Scanner scanEach = new Scanner(new BufferedReader(new FileReader("input/input-params.dat")));
 
         int numberOfTrials = IOUtil.skipToInt(scanEach);
-        int estimatedScore = IOUtil.skipToInt(scanEach);
-
+        int meanScore = IOUtil.skipToInt(scanEach);
+        double standardDeviation = IOUtil.skipToDouble(scanEach);
         double estimatedError = IOUtil.skipToDouble(scanEach);
-        double errorOnEach = ProbabilityUtil.percentErrorEstimate(estimatedError, estimatedScore);
+        double errorOnEach = ProbabilityUtil.percentErrorEstimate(estimatedError, meanScore);
 
-        double[] rawResult = ProbabilityUtil.predictedScores(errorOnEach, numberOfTrials, estimatedScore);
+        double[] rawResult = ProbabilityUtil.predictedScores(errorOnEach, numberOfTrials, meanScore);
         ArrayIOUtil.writeDoubles(new PrintWriter("output/one/raw-output.dat"), rawResult);
 
-        double mean = StatsUtil.mean(rawResult);
-        double variance = StatsUtil.variance(rawResult, mean);
+        StatsUtil.mean(rawResult);
+        double variance = StatsUtil.variance(rawResult, meanScore);
 
-        double[] gaussianRaw = StatsUtil.gaussian(numberOfTrials, variance, mean);
+        double[] gaussianRaw = StatsUtil.gaussian(numberOfTrials, variance, meanScore);
         ArrayIOUtil.writeDoubles(new PrintWriter("output/one/gaussian.dat"), gaussianRaw);
         double sum = 0.0;
         for(int i = 1; i < gaussianRaw.length; i++) {

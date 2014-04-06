@@ -1,5 +1,6 @@
 # This file holds the input data to use for the first most simple test.
 
 Number of Trials 100
-Predicted Score = 60
+Predicted Score (i.e mean) = 60
+Std Deviation = 10.0
 Error = 0.03
