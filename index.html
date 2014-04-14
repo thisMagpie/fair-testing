@@ -1,36 +1,37 @@
-<!doctype html>
+<!DOCTYPE html>
 <html>
   <head>
-    <meta charset="utf-8">
+    <meta charset='utf-8'>
     <meta http-equiv="X-UA-Compatible" content="chrome=1">
-    <title>Fair-Testing by thisMagpie</title>
-
-    <link rel="stylesheet" href="stylesheets/styles.css">
-    <link rel="stylesheet" href="stylesheets/pygment_trac.css">
-    <script src="javascripts/scale.fix.js"></script>
-    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+    <link href='https://fonts.googleapis.com/css?family=Chivo:900' rel='stylesheet' type='text/css'>
+    <link rel="stylesheet" type="text/css" href="stylesheets/stylesheet.css" media="screen" />
+    <link rel="stylesheet" type="text/css" href="stylesheets/pygment_trac.css" media="screen" />
+    <link rel="stylesheet" type="text/css" href="stylesheets/print.css" media="print" />
     <!--[if lt IE 9]>
     <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
     <![endif]-->
+    <title>Fair-Testing by thisMagpie</title>
   </head>
+
   <body>
-    <div class="wrapper">
-      <header>
-        <h1 class="header">Fair-Testing</h1>
-        <p class="header">Devising a Fair Test</p>
+    <div id="container">
+      <div class="inner">
 
-        <ul>
-          <li class="download"><a class="buttons" href="https://github.com/thisMagpie/fair-testing/zipball/master">Download ZIP</a></li>
-          <li class="download"><a class="buttons" href="https://github.com/thisMagpie/fair-testing/tarball/master">Download TAR</a></li>
-          <li><a class="buttons github" href="https://github.com/thisMagpie/fair-testing">View On GitHub</a></li>
-        </ul>
+        <header>
+          <h1>Fair-Testing</h1>
+          <h2>Devising a Fair Test</h2>
+        </header>
 
-        <p class="header">This project is maintained by <a class="header name" href="https://github.com/thisMagpie">thisMagpie</a></p>
+        <section id="downloads" class="clearfix">
+          <a href="https://github.com/thisMagpie/fair-testing/zipball/master" id="download-zip" class="button"><span>Download .zip</span></a>
+          <a href="https://github.com/thisMagpie/fair-testing/tarball/master" id="download-tar-gz" class="button"><span>Download .tar.gz</span></a>
+          <a href="https://github.com/thisMagpie/fair-testing" id="view-on-github" class="button"><span>View on GitHub</span></a>
+        </section>
 
+        <hr>
 
-      </header>
-      <section>
-        <h1>
+        <section id="main_content">
+          <h1>
 <a name="fair-testing" class="anchor" href="#fair-testing"><span class="octicon octicon-link"></span></a>fair-testing</h1>
 
 <h2>
@@ -69,6 +70,174 @@ pdflatex output-datafile.tex
 
 <p>A general summary of the relevant points noted during email and meeting discussions between Graeme Ackland and Magdalen Berns about the project. Associated data and reference material to follow up is also added here for easy reference/</p>
 
+<h1>
+<a name="initial-test-parameters" class="anchor" href="#initial-test-parameters"><span class="octicon octicon-link"></span></a>Initial Test Parameters</h1>
+
+<h3>
+<a name="gaussian-one-student-ability" class="anchor" href="#gaussian-one-student-ability"><span class="octicon octicon-link"></span></a>Gaussian One: Student Ability</h3>
+
+<p>This Gaussian assumes the student is capable of achieving 60% within a standard deviation of 22.6%. The error estimate made is not fully justified. There is a possibility the student will fail.</p>
+
+<p>However, our test refers to a population of students from the Edinburgh University School of Physics and Astronomy, which is <a href="http://www.topuniversities.com/university-rankings/world-university-rankings/2013#sorting=rank+region=+country=+faculty=+stars=false+search=">Ranked No. 17 in the world</a> and hence only allows the very strongest physics applicants of the world onto to the course it is difficult to decide whether to assume such students are capable of such a significant standard deviation in performance on their exams or whether to allow facts to influence the estimate on the first run of trials.</p>
+
+<p>To simplify matters. This Study will only look at those courses which are accredited by the Institute of Engineering </p>
+
+<p>For that reason the approach used is used with caution. </p>
+
+<p>mean: 60%</p>
+
+<p>std deviation 22.6%</p>
+
+<h3>
+<a name="gaussian-two-test-difficulty" class="anchor" href="#gaussian-two-test-difficulty"><span class="octicon octicon-link"></span></a>Gaussian two: Test Difficulty</h3>
+
+<p>mean: 60%</p>
+
+<p>std deviation 2%</p>
+
+<h1>
+<a name="exam-data" class="anchor" href="#exam-data"><span class="octicon octicon-link"></span></a>Exam Data</h1>
+
+<h3>
+<a name="astrophysics-3-exam-scaled-up-by-3" class="anchor" href="#astrophysics-3-exam-scaled-up-by-3"><span class="octicon octicon-link"></span></a><a href="https://www.wiki.ed.ac.uk/download/attachments/135806883/Astrophysics%203%20wiki.pdf?version=1&amp;modificationDate=1372243932000&amp;api=v2">Astrophysics 3 Exam</a> (Scaled Up by 3%)</h3>
+
+<ul>
+<li>Number of students present in the exam: 18</li>
+<li>Number of students who passed the exam: 16</li>
+</ul><p>Average mark of the course (includes only those students who sat the exam): 61%</p>
+
+<h3>
+<a name="stellar-evolution" class="anchor" href="#stellar-evolution"><span class="octicon octicon-link"></span></a><a href="https://www.wiki.ed.ac.uk/download/attachments/135806883/Stellar%20Evolution-%20wiki.pdf?version=1&amp;modificationDate=1372244111000&amp;api=v2">Stellar Evolution</a>
+</h3>
+
+<ul>
+<li>Number of students present in the exam: 37</li>
+<li>Number of students who passed the exam: 29</li>
+</ul><p>Average mark of the course (includes only those students who sat the exam) : 48%</p>
+
+<p>NOTE: The grade was scaled by an average of 3% to raise the class average to 51%</p>
+
+<h3>
+<a name="electromagnetism-exam" class="anchor" href="#electromagnetism-exam"><span class="octicon octicon-link"></span></a><a href="https://www.wiki.ed.ac.uk/download/attachments/135806883/Electromagnetism%202013%20-%20wiki.pdf?version=1&amp;modificationDate=1371462797000&amp;api=v2">Electromagnetism Exam</a>
+</h3>
+
+<ul>
+<li>Number of students present in the exam: 84</li>
+<li>Number of students who passed the exam: 68</li>
+</ul><p>Average mark of the course (includes only those students who sat the exam): 57.31%</p>
+
+<h3>
+<a name="advanced-statistical-physics" class="anchor" href="#advanced-statistical-physics"><span class="octicon octicon-link"></span></a><a href="https://www.wiki.ed.ac.uk/download/attachments/135806883/Advanced%20Stat%20Phys-%20wiki.pdf?version=1&amp;modificationDate=1371477108000&amp;api=v2">Advanced Statistical Physics</a>
+</h3>
+
+<ul>
+<li>Number of students present in the exam: 17</li>
+<li>Number of students who passed the exam: 17</li>
+</ul><p>Average mark of the course (includes only those students who sat the exam): 72.35%</p>
+
+<h3>
+<a name="quantum-mechanics" class="anchor" href="#quantum-mechanics"><span class="octicon octicon-link"></span></a><a href="https://www.wiki.ed.ac.uk/download/attachments/135806883/Quantum%20Mechanics%202012-13%20S1%20-%20wiki.pdf?version=1&amp;modificationDate=1371462818000&amp;api=v2">Quantum Mechanics</a>
+</h3>
+
+<ul>
+<li>Number of students present in the exam: 82</li>
+<li>Number of students who passed the exam: 73</li>
+</ul><p>Average mark of the course (includes only those students who sat the exam): 59.16%</p>
+
+<h3>
+<a name="dynamics-and-relativity" class="anchor" href="#dynamics-and-relativity"><span class="octicon octicon-link"></span></a><a href="https://www.wiki.ed.ac.uk/download/attachments/135806883/Dynamics%20and%20Relativity%202012%20-%20wiki.pdf?version=1&amp;modificationDate=1358775761000&amp;api=v2">Dynamics and Relativity</a>
+</h3>
+
+<ul>
+<li>Number of students present in the exam: 70</li>
+<li>Number of students who passed the exam: 61</li>
+</ul><p>Average mark of the course (includes only those students who sat the exam): 63%</p>
+
+<h3>
+<a name="lagrangian-dynamics" class="anchor" href="#lagrangian-dynamics"><span class="octicon octicon-link"></span></a><a href="https://www.wiki.ed.ac.uk/download/attachments/135806883/Lagrangian%20Dynamics%202012-13%20S2%20-%20wiki.pdf?version=1&amp;modificationDate=1371462795000&amp;api=v2">Lagrangian Dynamics</a>
+</h3>
+
+<ul>
+<li>Number of students present in the exam: 63</li>
+<li>Number of students who passed the exam: 63</li>
+</ul><p>Average mark of the course (includes only those students who sat the exam): 63.41%</p>
+
+<h3>
+<a name="physical-mathematics" class="anchor" href="#physical-mathematics"><span class="octicon octicon-link"></span></a><a href="https://www.wiki.ed.ac.uk/download/attachments/135806883/Physical%20Mathematics%202012-13%20-%20wiki.pdf?version=1&amp;modificationDate=1372246724000&amp;api=v2">Physical Mathematics</a>
+</h3>
+
+<ul>
+<li>Number of students present in the exam: 87</li>
+<li>Number of students who passed the exam: 67</li>
+</ul><p>Average mark of the course (includes only those students who sat the exam): 67.9%</p>
+
+<p>An interesting contrast to Lagrangian Dynamics which has a lower average grade yet a 100% pass for all students who sat.</p>
+
+<h3>
+<a name="statistical-mechanics" class="anchor" href="#statistical-mechanics"><span class="octicon octicon-link"></span></a><a href="https://www.wiki.ed.ac.uk/download/attachments/135806883/Statistical%20Mechanics%202012-13%20S2%20-%20wiki.pdf?version=1&amp;modificationDate=1371462818000&amp;api=v2">Statistical Mechanics</a>
+</h3>
+
+<ul>
+<li>Number of students present in the exam: 86</li>
+<li>Number of students who passed the exam: 72</li>
+</ul><p>Average mark of the course (includes only those students who sat the exam): 63.47%</p>
+
+<h3>
+<a name="symmetries-of-classical-mechanics" class="anchor" href="#symmetries-of-classical-mechanics"><span class="octicon octicon-link"></span></a><a href="https://www.wiki.ed.ac.uk/download/attachments/135806883/Symmetries%20of%20Classical%20Mechanics%202012-%20wiki.pdf?version=1&amp;modificationDate=1358775762000&amp;api=v2">Symmetries of Classical Mechanics</a>
+</h3>
+
+<ul>
+<li>Number of students present in the exam: 35</li>
+<li>Number of students who passed the exam: 31</li>
+</ul><p>Average mark of the course (includes only those students who sat the exam): 57.1%</p>
+
+<h3>
+<a name="thermodynamics" class="anchor" href="#thermodynamics"><span class="octicon octicon-link"></span></a><a href="https://www.wiki.ed.ac.uk/download/attachments/135806883/Thermodynamics%202012-13%20SV1%20-%20wiki.pdf?version=1&amp;modificationDate=1371462818000&amp;api=v2">Thermodynamics</a>
+</h3>
+
+<ul>
+<li>Number of students present in the exam: 69</li>
+<li>Number of students who passed the exam: 68</li>
+</ul><p>Average mark of the course (includes only those students who sat the exam): 68.5%</p>
+
+<h3>
+<a name="statistical-physics" class="anchor" href="#statistical-physics"><span class="octicon octicon-link"></span></a><a href="https://www.wiki.ed.ac.uk/download/attachments/135806883/Statistical%20Physics-%20wiki.pdf?version=1&amp;modificationDate=1371477305000&amp;api=v2">Statistical Physics</a>
+</h3>
+
+<ul>
+<li>Number of students present in the exam: 77</li>
+<li>Number of students who passed the exam: 70</li>
+</ul><p>Average mark of the course (includes only those students who sat the exam): 65.17%</p>
+
+<h3>
+<a name="relativistic-quantum-field-theory" class="anchor" href="#relativistic-quantum-field-theory"><span class="octicon octicon-link"></span></a><a href="https://www.wiki.ed.ac.uk/download/attachments/135806883/RQFT-%20wiki.pdf?version=1&amp;modificationDate=1371477294000&amp;api=v2">Relativistic Quantum Field Theory</a>
+</h3>
+
+<ul>
+<li>Number of students present in the exam: 23</li>
+<li>Number of students who passed the exam: 17</li>
+</ul><p>Average mark of the course (includes only those students who sat the exam): 47%</p>
+
+<h3>
+<a name="physics-skills-bsc" class="anchor" href="#physics-skills-bsc"><span class="octicon octicon-link"></span></a><a href="https://www.wiki.ed.ac.uk/download/attachments/135806883/Physics%20Skills%20-%20BScM4M5%20201213.pdf?version=2&amp;modificationDate=1371477265000&amp;api=v2">Physics Skills BSc</a>
+</h3>
+
+<p>Average mark of the course (includes only those students who sat the exam): 57%</p>
+
+<h3>
+<a name="physics-skills-mphys4" class="anchor" href="#physics-skills-mphys4"><span class="octicon octicon-link"></span></a><a href="https://www.wiki.ed.ac.uk/download/attachments/135806883/Physics%20Skills%20-%20BScM4M5%20201213.pdf?version=2&amp;modificationDate=1371477265000&amp;api=v2">Physics Skills MPhys4</a>
+</h3>
+
+<p>Average mark of the course (includes only those students who sat the exam): 61%</p>
+
+<h3>
+<a name="physics-skills-mphys5" class="anchor" href="#physics-skills-mphys5"><span class="octicon octicon-link"></span></a><a href="https://www.wiki.ed.ac.uk/download/attachments/135806883/Physics%20Skills%20-%20BScM4M5%20201213.pdf?version=2&amp;modificationDate=1371477265000&amp;api=v2">Physics Skills MPhys5</a>
+</h3>
+
+<p>Average mark of the course (includes only those students who sat the exam): 63%</p>
+
+<p>Note: Physics Skills results indicate that there is a larger std deviation in Exam difficulty than previously predicted.</p>
+
 <h4>
 <a name="reading-list" class="anchor" href="#reading-list"><span class="octicon octicon-link"></span></a><a href="https://github.com/thisMagpie/fair-testing/wiki/Reading-List">Reading List</a>
 </h4>
@@ -102,12 +271,15 @@ pdflatex output-datafile.tex
 <p>Supervisor: Professor Graeme Ackland</p>
 
 <p>With Special thanks to </p>
-      </section>
-      <footer>
-        <p><small>Hosted on <a href="http://pages.github.com">GitHub Pages</a> using the Dinky theme</small></p>
-      </footer>
+        </section>
+
+        <footer>
+          Fair-Testing is maintained by <a href="https://github.com/thisMagpie">thisMagpie</a><br>
+          This page was generated by <a href="http://pages.github.com">GitHub Pages</a>. Tactile theme by <a href="https://twitter.com/jasonlong">Jason Long</a>.
+        </footer>
+
+        
+      </div>
     </div>
-    <!--[if !IE]><script>fixScale(document);</script><![endif]-->
-		
   </body>
 </html>
