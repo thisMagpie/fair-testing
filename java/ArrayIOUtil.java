@@ -42,24 +42,26 @@ public class ArrayIOUtil extends IOUtil{
             toFile.printf("%2.5f %2.5f", data[i][0], data[i][1]);
             toFile.println();
         }
+        toFile.close();
     }
 
     public static double[] readDoubles(Scanner scanned, int length){
         double[] data=new double[length];
-        for (int i=0;i<data.length;i++) data[i] = IOUtil.skipToDouble(scanned);
+        for (int i= 0; i < data.length; i++) data[i] = IOUtil.skipToDouble(scanned);
         return data;
     }
 
     public static double[][] readDoubles(Scanner scanned, int length, int numberOfColumns){
         double[][] data = new double[length][numberOfColumns];
-        for (int i=0;i<data.length;i++){
-            for (int j=0;j<data[0].length;j++){
+        for (int i= 0;i < data.length;i++){
+            for (int j=0;j<data[1].length;j++){
                 data[i][j] = IOUtil.skipToDouble(scanned); //TODO check
             }
         }
         return data;
     }
 
+    //TODO move
     public static int[][] initArray(int length){
         return new int[length][length];
     }
