@@ -1,6 +1,11 @@
 # This file holds the input data to use for the first most simple test.
 
-Number of Trials 100
+Student Ability to Pass
+Number of Trials = 24
+Predicted Score (i.e. mean) = 60
+Std Deviation = 20.6
+
+Examination Difficulty Level
+Number of Trials = 24
 Predicted Score (i.e mean) = 60
-Std Deviation = 10.0
-Error = 0.03
+Std Deviation = 2.0
