@@ -1,22 +1,32 @@
 \documentclass[12pt]{article}
 \usepackage{natbib}
 \usepackage{todonotes}
-\usepackage{csquotes}
 \usepackage[hmargin=1.5cm,vmargin=1.5cm]{geometry}
+\usepackage{hyperref}
+\usepackage{cleveref}
+
+\crefname{table}{table}{tables}
+\Crefname{table}{Table}{Tables}
+\crefname{figure}{figure}{figures}
+\Crefname{figure}{Figure}{Figures}
+\crefname{equation}{equation}{equations}
+\Crefname{Equation}{Equation}{Equation}
 
 \title{Devising a Fair System of Trials}
 \author{Magdalen Berns \\
-	Supervisor: Professor G. Ackland}
+    Supervisor: Professor G. Ackland}
 \date{\today}
 
-%\setlength\parindent{0pt}
+\setlength\parindent{0pt}
 \begin{document}
 \maketitle
 \thispagestyle{empty}
 
 \begin{abstract}
 \noindent
-
+\todo[inline]{describe briefly a) Why the study is important \\
+                               b) the key results \\
+                               c) why they are significant }
 \end{abstract}
 
 \clearpage
@@ -24,21 +34,71 @@
 \thispagestyle{empty}
 \clearpage
 \section{Introduction}
-\todo[inline]{describe motivation for the study and what will be done in the study without going into too
-much heavy mathematics}
+
+\paragraph{Determining the most reproducible, relabable and accurate result which describes a student's
+ability using the fewest number of trials possible is an area of study largly unexplored in
+Higher education to date. The University of Edinburgh Teaching and assessment regulations
+assertion that a 2\% margin for error exists as a possibility on a student's exam score.\cite{}}
+
+
+\paragraph{Yet, there is no referenced data or citation in the regulation which indicates where such
+a specific and narrow standard deviation as 2\% on test scores has been arrived at.}
+
+
+\paragraph{This work sets out to determine a fair system of trials and ultimately to determine
+whether or not the University of Edinburgh is justified in making the assumption that
+a 2\% error on exam grades exists by comparing concrete testing methods against physical
+examination data provided by the school of Physics and Astronomy\todo[inline] {finish this paragraph}}
+
 \section{Theory and Algorithms}
-\todo[inline]{describe each hypothesis in mathematical terms and do so using equations and sudo-code}
+
+\paragraph{Exam result data cannot be catagorised because it is theoretically possible to achieve
+any grade between 0-100. That means a parametic test is preferable for significance
+ testing of the data so that the results set can be transformed into a normal distribution.}
+
+\paragraph{The sum of square deviations of data points $x_i$ from the expectation model mean value $\mu$
+ determined by \cref{eq:mu} is given by \cref{eq:ssq}}
+
+\begin{equation}
+\mu = \frac{x_1 + x_2 + \cdots + x_n}{n} = \frac{1}{N}\sum_{i}^{N} x_i
+\label{eq:mu}
+\end{equation}
+
+\begin{equation}
+\Sigma{(x_i-\mu)^2}
+\label{eq:ssq}
+\end{equation}
+
+The standard deviation of a population variance is given by \cref{eq:std-dev} 
+
+\begin{equation}
+\sigma=\sqrt{\frac{\Sigma{(x_i-\mu)^2}}{N}}
+\label{eq:std-dev}
+\end{equation}
+
+\subsection{Gaussian Distribution}
+
+\subsection{Point Spread Function}
+
+\subsection{Central Limit Theorem}
+
 \section{Method and Code Design}
-\subsection{Testing the simple \enquote{One Parameter} Model}
-To test the \enquote{One Parameter} hypothesis the model had to be stripped down to the simpliest form.
-Certain assumptions were neccessarily made in order for this model to be simulated. It was assumed that it is possible
-to test a single subject multiple times and reasonably predict that the same score will result within a certain std deviation
-\todo[inline]{finalise estimation based on normal practices and cite} of some amount which will provide a reliable indicator
-of the subjects ability to obtain the score. i.e a reproducable result will be obtained.
 
+The code design was written in java 7 and the graphs were written using pgfplot
+package in latex \todo[inline]{ use cool latex font}
 
-\section{Code Design}
+\subsection{Examination Difficulty Level}
+
+\paragraph{The first system assumes that the student is flawless and that any standard deviation in grades is due to a flaw in in the exam or teaching with a standard deviation of $2\%$ which inadvetantly leads to an exam which is either too easy or too hard for the student's level of physics skill which leads to a deviation from the mean of $\pm{2\%}$. \cite{}}
+
+\subsection{Student Ability To Do Well in Exam}
+
+The second system assumes that the lecturer and his or her exam is flawless in its execution and that any standard deviation in grades is due to a flaw or exceptional ability in the student $22.6\%$.\cite{}
+
+%\subsection{Testing the simple \enquote{One Parameter} Model}
+
 \section{Results and Discussion}
+
 \section{Conclusion}
 \bibliography{fairtest}
 \bibliographystyle{unsrt}
