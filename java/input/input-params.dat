@@ -1,11 +1,11 @@
 # This file holds the input data to use for the first most simple test.
 
-Student Ability to Pass
-Number of Trials = 24
-Predicted Score (i.e. mean) = 60
-Std Deviation = 20.6
+Edinburgh Physics Population Likelyhood of Success
+Number of Trials   = 24
+Predicted Class    = 60
+Std Error On Score = 0.02
 
-Examination Difficulty Level
-Number of Trials = 24
-Predicted Score (i.e mean) = 60
-Std Deviation = 2.0
+Predicted Individual Student Ability to Pass
+Number of Trials   = 24
+Predicted Class    = 60
+Std Error On Score = 0.09
