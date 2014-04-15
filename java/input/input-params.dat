@@ -1,11 +1,7 @@
-# This file holds the input data to use for the first most simple test.
+This file holds the input data to use for the following system of trials
+a) Edinburgh Physics Population Likelyhood of Success
+b) Predicted Individual Student Ability to Pass
 
-Edinburgh Physics Population Likelyhood of Success
-Number of Trials   = 24
-Predicted Class    = 60
-Std Error On Score = 0.02
-
-Predicted Individual Student Ability to Pass
-Number of Trials   = 24
-Predicted Class    = 60
-Std Error On Score = 0.09
+Number of Trials                         = 24
+Predicted Pecentage Grade on Course      = 60
+Standard Percentage Error On Predicted   = 9.8
