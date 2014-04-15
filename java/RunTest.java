@@ -19,33 +19,36 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-import java.util.Scanner;
 import java.io.*;
+import java.util.Scanner;
 
-public class RunTest{
+public class RunTest {
 
     public static void main(String[] argsv) throws IOException, FileNotFoundException {
-        Scanner scanEach = new Scanner(new BufferedReader(new FileReader("input/input-params.dat")));
+        String population = "/recorded-population-grades.dat";
+        Scanner scan = IOUtil.scanFrom("input" + population);
 
-        int numberOfTrials = IOUtil.skipToInt(scanEach);
-        int meanScore = IOUtil.skipToInt(scanEach);
-        double standardDeviation = IOUtil.skipToDouble(scanEach);
-        double estimatedError = IOUtil.skipToDouble(scanEach);
-        double errorOnEach = ProbabilityUtil.percentErrorEstimate(estimatedError, meanScore);
+        //retrieve scanner and length of data already indicated in input file
+        double[] recordedPopulationResults = ArrayIOUtil.readDoubles(scan, IOUtil.skipToInt(scan));
+        writeDistribution(IOUtil.writeTo("output" + population), recordedPopulationResults);
+        ArrayIOUtil.printDoubles(recordedPopulationResults);
+    }
 
-        double[] rawResult = ProbabilityUtil.predictedScores(errorOnEach, numberOfTrials, meanScore);
-        ArrayIOUtil.writeDoubles(new PrintWriter("output/one/raw-output.dat"), rawResult);
+    public static void writeDistribution(PrintWriter writeTo, double data[]) {
+        double mean                 = StatsUtil.mean(data);
+        double variance             = StatsUtil.variance(data, mean);
+        double standardDeviation    = StatsUtil.standardDeviation(
+                                                        variance,
+                                                        data.length);
 
-        StatsUtil.mean(rawResult);
-        double variance = StatsUtil.variance(rawResult, meanScore);
+        double[] gaussian = StatsUtil.gaussian(data.length, variance, mean);
 
-        double[] gaussianRaw = StatsUtil.gaussian(numberOfTrials, variance, meanScore);
-        ArrayIOUtil.writeDoubles(new PrintWriter("output/one/gaussian.dat"), gaussianRaw);
-        double sum = 0.0;
-        for(int i = 1; i < gaussianRaw.length; i++) {
-              System.out.println(i + " " + gaussianRaw[i]);
-              sum+=gaussianRaw[i];
-        }
-        System.out.println("\nSum = " + sum + "\n");
+        System.out.println("The full data range\nMean =" +
+                            mean +"\nVariance = " +
+                            variance + "\nStandard Deviation " +
+                            standardDeviation);
+
+        ArrayIOUtil.writeDoubles(writeTo, gaussian);
+        ArrayIOUtil.printDoubles(gaussian); //TODO remove later
     }
 }
