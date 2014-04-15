@@ -1,6 +1,4 @@
 /**
-* BubbleSort.java
-* ===============
 * Copyright (C) 2014  Magdalen Berns
 *
 * This program is free software: you can redistribute it and/or modify
@@ -17,14 +15,32 @@
 
 public class BubbleSort {
 
-    public static int[] Ints(int[] data){
-        int temp = 0;
-        //TODO remove later unsorted array for debugging
-        for(int i=0; i<data.length; i++){
-            System.out.print(" " + data[i]);
-        }
+/**
+ * Bubblesort class for performing bubblesort through data to arrange in order
+ * of size.
+ *
+ * This file is a part of a program which serves as a utility for prediction and
+ * data analysis of experimental and simulated data Test Class to run Simulation
+ * of system of fair trials.
+ *
+ * @author Magdalen Berns
+ * @version 1.0
+ * @since 1.0
+ */
 
-        //Sort Array
+   /**
+    * intSort
+    *               Function to sort each element of a 1D array of ints in order of size
+    *
+    * @param data
+    *               1D int array of data to be sorted
+    * @return
+    *               return sorted 1D array of ints
+    *
+    */
+    public static int[] intSort(int[] data){
+        int temp = 0;
+
         for(int i=1; i<data.length; i++) {
             for(int j=data.length-1; j>=i; j--){
 
@@ -34,39 +50,32 @@ public class BubbleSort {
                     data[j] = temp;
                 }
             }
-        }
-
-        //Print Sorted Array TODO remove later
-        for(int i =0; i< data.length; i++){
-            System.out.print(" " + data[i]);
         }
         return data; //return ... duh!
     }
 
-    public static double[] Doubles(double[] data){
+   /**
+    * doubleSort
+    *               Function to sort each element of a 1D array of doubles in order of size
+    *
+    * @param data
+    *               1D double array of data to be sorted
+    * @return
+    *               return sorted 1D array of doubles
+    *
+    */
+    public static double[] doubleSort(double[] data){
         double temp = 0.0;
-        //TODO remove later unsorted array for debugging
-        for(int i=0; i<data.length; i++){
-            System.out.print(" " + data[i]);
-        }
 
-        //Sort Array
-        for(int i=1; i<data.length; i++) {
-            for(int j=data.length-1; j>=i; j--){
-
-                if(data[j-1]> data[j]){
+        for(int i=1; i < data.length; i++) {
+            for(int j=data.length-1; j>= i; j--) {
+                if(data[j-1] > data[j]) {
                     temp = data[j-1];
                     data[j-1] = data[j];
                     data[j] = temp;
                 }
             }
         }
-
-        //Print Sorted Array TODO remove later
-        for(int i =0; i< data.length; i++){
-            System.out.println(i + "    " + data[i] + "\n");
-        }
         return data;
     }
 }
-

@@ -1,15 +1,9 @@
 /**
- * RunTest.java
- * ==============
- *
- * This file is a part of a program which serves as a utility for prediction
- * and data analysis of experimental and simulated data
- *
  * Copyright (C) 2014 Magdalen Berns <m.berns@sms.ed.ac.uk>
  *
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
- * the Free Software Foundation, either version 3 of the License, or
+ * the Free Software Foundation, either version 2 of the License, or
  * (at your option) any later version.
  * This program is distributed in the hope that it will be useful,
  * but WITHOUT ANY WARRANTY; without even the implied warranty of
@@ -19,51 +13,49 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-import java.util.Scanner;
 import java.io.*;
+import java.util.Scanner;
 
-public class RunTest{
+public class RunTest {
+
+/**
+ * This file is a part of a program which serves as a utility for prediction and
+ * data analysis of experimental and simulated data Test Class to run Simulation
+ * of system of fair trials.
+ *
+ * @author Magdalen Berns
+ * @version 1.0
+ * @since 1.0
+ */
 
     public static void main(String[] argsv) throws IOException, FileNotFoundException {
-        Scanner scanEach = new Scanner(new BufferedReader(new FileReader("input/input-params.dat")));
-        PrintWriter printRawDataToFile = new PrintWriter("output/one/raw-output.dat");
+        String population = "/recorded-population-grades.dat";
+        Scanner scan = IOUtil.scanFrom("input" + population);
 
-        int numberOfTrials = IOUtil.skipToInt(scanEach);
-        int estimatedScore = IOUtil.skipToInt(scanEach);
+        BubbleSort.Doubles(data);
 
-        double estimatedError = IOUtil.skipToDouble(scanEach);
+        //retrieve scanner and length
+        double[] recordedPopulationResults = ArrayIOUtil.readDoubles(scan, IOUtil.skipToInt(scan));
 
-        double errorOnEach = ProbabilityUtil.percentErrorEstimate(estimatedError, estimatedScore);
-        double[] rawResult = ProbabilityUtil.predictedScores(errorOnEach, numberOfTrials, estimatedScore);
-
-        ArrayIOUtil.writeDoubles(printRawDataToFile, rawResult);
-
-        // Gaussian Stuff
-        PrintWriter printGaussianToFile = new PrintWriter("output/one/gaussian.dat");
-
-        double mean = StatsUtil.mean(rawResult);
-        double variance = StatsUtil.variance(rawResult, mean);
-        double[] gaussianRaw = StatsUtil.gaussian(numberOfTrials, variance, mean);
-
-        int count = 0;
-
-        for(int i=0; i < gaussianRaw.length; i++){
-            if (gaussianRaw[i] > 0.0) {
-                count += 1;
-            }
-        }
-        spread(count, gaussianRaw);
+        writeDistribution(IOUtil.writeTo("output" + population), recordedPopulationResults);
+        ArrayIOUtil.printDoubles(recordedPopulationResults);
     }
-    public static double[] spread(int count, double[] data){
-        double[] gaussian = new double[count];
-        count = 0;
-        for (int i = 1; i < data.length + 1; i++){
-            if (data[i - 1] > 0.0) {
-                gaussian[count] = data[i - 1];
-                System.out.println(count + " " + gaussian[count]); // TODO sort
-                count += 1;
-            }
-        }
-        return gaussian;
+
+    public static void writeDistribution(PrintWriter writeTo, double data[]) { //TODO give it a class
+        double mean                 = StatsUtil.mean(data);
+        double variance             = StatsUtil.variance(data, mean);
+        double standardDeviation    = StatsUtil.standardDeviation(
+                                                        variance,
+                                                        data.length);
+
+        double[] gaussian = StatsUtil.gaussian(data.length, variance, mean);
+
+        System.out.println("The full data range\nMean =" +
+                            mean +"\nVariance = " +
+                            variance + "\nStandard Deviation " +
+                            standardDeviation);
+
+        ArrayIOUtil.writeDoubles(writeTo, gaussian);
+        ArrayIOUtil.printDoubles(gaussian); //TODO remove later. For dbug
     }
 }

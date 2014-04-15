@@ -1,6 +1,5 @@
 /**
  * StatsUtil.java
- * ==============
  *
  * This file is a part of a program which serves as a utility for prediction
  * and data analysis of experimental and simulated data
@@ -16,14 +15,24 @@
  * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
  * GNU General Public License for more details.
  * You should have received a copy of the GNU General Public License
- * along with this program.  If not, see <http://www.gnu.org/licenses/>.
+ * along with this program.  If not, see <http://www.gnu.org/licenses/>
+ *
  */
 public class StatsUtil{
 
+/**
+ * StatsUtil.java
+ * 
+ * A Utility class for Statistical Operations with data.
+ *
+ * @author Magdalen Berns
+ */
+
     private static final double period = 2 * Math.PI;
+
     /**
      * mean
-     *                   Works out the fit of the data
+     *                   Works out the mean value of supplied data
      * @param data
      *                   Array of doubles holding the x and y values in [i][0] and [j][1] respectively
      *
@@ -32,7 +41,7 @@ public class StatsUtil{
      */
     public static double mean(double[] data){
         double sum = 0.0;
-        for(int i=0;i< data.length; i++) sum += data[i];
+        for(int i = 0; i < data.length; i++) sum += data[i];
         return sum / (double) data.length - 1;
     }
 
@@ -44,13 +53,15 @@ public class StatsUtil{
      * @param yVariance
      *                   Array of doubles holding the y variance values
      * @param data
-     *                   Array of doubles holding the x and y values in [i][0] and [j][1] respectively
+     *                   Array of doubles holding the x and y values in [i][0]
+     *                   and [j][1] respectively
      *
      * @return
-     *                  The covariance as a double giving the fit difference of least squares
+     *                  The covariance as a double giving the fit difference of
+     *                  least squares
      */
     public static double covariance(double xVariance, double yVariance, double[][] data){
-        double covariance=0.0;
+        double covariance = 0.0;
         for (int i = 0; i < data.length; i++) covariance += (data[i][0] - xVariance) * (data[i][1] - yVariance);
         return covariance;
     }
@@ -70,8 +81,8 @@ public class StatsUtil{
      * @return
      *                  The covariance as a double giving the fit difference of least squares
      */
-    public static double covariance(double xVariance, double yVariance, double[] x, double[] y){
-        double covariance=0.0;
+    public static double covariance(double xVariance, double yVariance, double[] x, double[] y) {
+        double covariance = 0.0;
         for (int i = 0; i < x.length; i++) covariance += (x[i] - xVariance) * (y[i] - yVariance);
         return covariance;
     }
@@ -85,12 +96,12 @@ public class StatsUtil{
      *          The mean of the data
      *
      * @return
-     *          The sum of all the variances
+     *          The sum of all the variances as a double
      */
     public static double variance(double[] data, double mean){
         double variance = 0.0;
-        for (int i = 0; i < data.length; i++) variance += Math.pow((data[i] - mean),2);
-        return variance/data.length -1;
+        for (int i = 0; i < data.length; i++) variance += Math.pow((data[i] - mean), 2);
+        return variance;
     }
 
     /**
@@ -105,8 +116,8 @@ public class StatsUtil{
      *                   The the standard deviation of least squares fit as a double
      */
     public static double standardDeviation(double variance, int n){
-        double stdDev= 0.0;
-        if(n > 0) stdDev = Math.sqrt(variance / n);
+        double stdDev = 0.0;
+        if(n > 0) stdDev = Math.sqrt(variance) / n;
         return stdDev;
     }
 
@@ -126,12 +137,13 @@ public class StatsUtil{
 
     /**
      * yIntercept
-     *                   Works out the offset of the data (i.e the constant value by which y is offset)
-     * @xMean
+     *                   Works out the offset of the data (i.e the constant
+     *                   Value by which y is offset)
+     * @param xMean
      *                   The mean value of the x coordinate of the data being analysed
-     * @yMean
+     * @param yMean
      *                   The mean value of the y coordinate of the data being analysed
-     * @gradient
+     * @param gradient
      *                  The gradient
      * @return
      *          The the standard deviation of least squares fit as a double
@@ -142,7 +154,8 @@ public class StatsUtil{
 
     /**
      * fit
-     *                   Works out the fit of the data
+     *                   Works out the fit of a linear data set from a 2D array,
+     *                   where x = [i][0] and y = [j][1]
      * @param data
      *                   Array of doubles holding the x and y values in [i][0] and [j][1] respectively
      * @param gradient
@@ -181,7 +194,8 @@ public class StatsUtil{
      * standardError
      *                  Gives the residual sum of squares.
      * @param data
-     *                  Array of doubles holding the x and y values in [i][0] and [i][1] respectively
+     *                  Array of doubles holding the x and y values in [i][0]
+     *                  and [i][1] respectively
      * @param fit
      *                  The the least squares fit as an array of doubles
      * @return
@@ -205,7 +219,7 @@ public class StatsUtil{
      *                  Standard error in mean i.e. residual sum of squares
      *                  as a double
      */
-    public static double standardError(double[] y, double[] fit){
+    public static double standardError(double[] y, double[] fit) {
 
         double rss = 0.0;
         for (int i = 0; i < y.length; i++)
@@ -214,18 +228,18 @@ public class StatsUtil{
     }
 
     /**
-     * regressionSOS
-     *                  Regression sum of squares
+     * regressionSumOfSquares
+     *                               Calculates regression sum of squares
      * @param fit
-     *                  The the least squares fit as an array of doubles
-     * @param yMean
-     *                  Array of doubles holding the mean y values
+     *                               The the least squares fit as an array of doubles
+     * @param mean
+     *                               Array of doubles holding the mean y values
      * @return
-     *                  The regression sum of squares as a double
+     *                               The regression sum of squares as a double
      */
-    public static double regressionSumOfSquares(double[] fit, double yMean){
-        double ssr = 0.0;
-        for (int i = 0; i < fit.length; i++) ssr += (fit[i] - yMean) * (fit[i] - yMean);
+    public static double regressionSumOfSquares(double[] fit, double mean) {
+        double ssr = 0.0; // initialise and instansiate regression sum of squres variable
+        for (int i = 0; i < fit.length; i++) ssr += (fit[i] - mean) * (fit[i] - mean);
         return ssr;
     }
 
@@ -240,7 +254,6 @@ public class StatsUtil{
      *                  Array of doubles holding the data's residual points
      */
     public static double[] residuals(double[] y, double[] fit){
-
         double[] residuals=new double[y.length];
         for (int i = 0; i < y.length; i++)
             residuals[i] = y[i] - fit[i];
@@ -249,24 +262,27 @@ public class StatsUtil{
 
     /**
      * linearCorrelationCoefficient
-     *                              Linear correlation coefficient found when we calculate the regression sum of
-     *                              squares over the variance given in y
+     *                              Linear correlation coefficient found when we
+     *                              calculate the regression sum of squares over
+     *                              the variance given in y.
+     *
      * @param regressionSumOfSquares
-     *                              Standard error of mean from having calculated the regression sum of squares
+     *                              Standard error of mean from having calculated
+     *                              the regression sum of squares.
+     *
      * @param yVariance
      *                              Variance in y as an array of double values
-
+     *
      * @return
      *                              Linear correlation coefficient of data as a double
      */
-
-    public static double linearCorrelationCoefficient(double regressionSumOfSquares, double yVariance){
+    public static double linearCorrelationCoefficient(double regressionSumOfSquares, double yVariance) {
         return regressionSumOfSquares / yVariance;
     }
 
     /**
      * errorOffset
-     *              Gives the error in the offset
+     *              Gives the error in the offset in a linear fit
      * @param n
      *              Integer length of the array of data doubles
      * @param xVariance
@@ -301,13 +317,13 @@ public class StatsUtil{
         return Math.sqrt(stdVariance/ xVariance);
     }
 
-    public static double errorFit(double stdFit){ // TODO Check: forgotten what this is about!?!
+    public static double errorFit(double stdFit){
         return Math.sqrt(stdFit);
     }
 
    /**
     * gaussian
-    *                         a normalised gaussian to reflect the distribution of the data 
+    *                         Transform data into a normalised gaussian
     * @param numberOfSamples
     *                         sample number appropriate to size of original data array
     * @param variance                    
@@ -315,18 +331,18 @@ public class StatsUtil{
     * @param mean
     *                         mean of data
     * @return
-    *                         normalised gaussian in the form of 1D array of doubles for y axis
+    *                         normalised gaussian in the form of 1D array of doubles
     */
-    public static double[] gaussian(int numberOfSamples, double variance, double mean){
+    public static double[] gaussian(int numberOfSamples, double variance, double mean) {
         double[] gaussian = new double[numberOfSamples];
         double tempGaussian= 0.0;
 
-        for (int i=0; i<numberOfSamples; i++){
-            gaussian[i] = Math.sqrt(1/(period)* variance)*(Math.exp(-(i-mean)*(i-mean)/(2 * variance)));
+        for (int i=0; i < numberOfSamples; i++) {
+            gaussian[i] = Math.sqrt(1 / period * variance) * (Math.exp(- Math.pow((i-mean), 2) / (2 * variance)));
             tempGaussian += gaussian[i];
         }
         
-        for (int i=0; i< numberOfSamples; i++){ //normalise
+        for (int i=0; i< numberOfSamples; i++){
             gaussian[i] /= tempGaussian;
         }
         return gaussian;
@@ -334,25 +350,49 @@ public class StatsUtil{
 
     /**
      * convolve
-     *                        convolve data with a normalised gaussian in order to smooth the output after
-     *                        reducing sample rate
+     *                          convolve data with a normalised gaussian in order
+     *                          to smooth the output after reducing sample rate
      * @param data
-     *                         2D data array to be smoothed
+     *                          1D integer data array to be smoothed
      * @param gaussian
-     *                         normalised gaussian in the form of 1D array of doubles for y axis
+     *                          normalised gaussian in the form of 1D array of doubles for y axis
      * @param numberOfSamples
-     *                         sample number appropriate to size of original data array
+     *                          sample number appropriate to size of original data array
      * @return
-     *                        Smoothed data as array of doubles 
+     *                          Smoothed data as array of doubles 
      */ 
     public static double[] convolve(int[] data, double[] gaussian, int numberOfSamples){
         double convolved[] = new double[data.length - (numberOfSamples + 1)];
-        for (int i=0; i<convolved.length; i++){
+        for (int i=0; i < convolved.length; i++){
             convolved[i] = 0.0;
-            for (int j=i, k=0; j<i + numberOfSamples; j++, k++){
+            for (int j=i, k = 0; j< i + numberOfSamples; j++, k++){
                 convolved[i] +=  data[j] * gaussian[k];
             }
         }
         return convolved;
     }
+
+    /**
+     * convolve
+     *                         convolve two normalised gaussian spreads to get
+     *                         distribution of probabilities.
+     * @param g1
+     *                         1D double containing the first normalised gaussian
+     *                         to convolve
+     * @param g2
+     *                         1D double containing the second normalised gaussian
+     *                         to convolve
+     * @return
+     *                         Array of doubles containing the normalised gaussian convolution
+     *                         as an array of doubles 
+     */ 
+    public static double[] convolve(double[] g1, double[] g2) { //TODO test
+        double convolved[] = new double[g1.length - (g2.length + 1)];
+ 
+        for (int i=0; i<convolved.length; i++) {
+            convolved[i] = 0.0;
+            for (int j=i, k=0; j < i + g2.length; j++, k++) convolved[i] += g1[j] * g2[k];
+        }
+        return convolved;
+    }   
 }
