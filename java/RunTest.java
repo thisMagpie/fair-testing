@@ -29,15 +29,15 @@ public class RunTest {
  */
 
     public static void main(String[] argsv) throws IOException, FileNotFoundException {
-        String population = "/recorded-population-grades.dat";
-        Scanner scan = IOUtil.scanFrom("input" + population);
+        String population = "population-grades.dat";
+        Scanner scan = IOUtil.scanFrom("input/recorded-" + population);
 
         BubbleSort.Doubles(data);
 
         //retrieve scanner and length
         double[] recordedPopulationResults = ArrayIOUtil.readDoubles(scan, IOUtil.skipToInt(scan));
 
-        writeDistribution(IOUtil.writeTo("output" + population), recordedPopulationResults);
+        writeDistribution(IOUtil.writeTo("population-grades.dat" + population), recordedPopulationResults);
         ArrayIOUtil.printDoubles(recordedPopulationResults);
     }
 

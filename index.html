@@ -139,203 +139,6 @@ extends java.lang.Object</pre>
 </table>
 </li>
 </ul>
-<!-- ========== METHOD SUMMARY =========== -->
-<ul class="blockList">
-<li class="blockList"><a name="method_summary">
-<!--   -->
-</a>
-<h3>Method Summary</h3>
-<table class="overviewSummary" border="0" cellpadding="3" cellspacing="0" summary="Method Summary table, listing methods, and an explanation">
-<caption><span>Methods</span><span class="tabEnd">&nbsp;</span></caption>
-<tr>
-<th class="colFirst" scope="col">Modifier and Type</th>
-<th class="colLast" scope="col">Method and Description</th>
-</tr>
-<tr class="altColor">
-<td class="colFirst"><code>static double[]</code></td>
-<td class="colLast"><code><strong><a href="StatsUtil.html#convolve(double[], double[])">convolve</a></strong>(double[]&nbsp;g1,
-        double[]&nbsp;g2)</code>
-<div class="block">convolve
-                         convolve two normalised gaussian spreads to get
-                         distribution of probabilities.</div>
-</td>
-</tr>
-<tr class="rowColor">
-<td class="colFirst"><code>static double[]</code></td>
-<td class="colLast"><code><strong><a href="StatsUtil.html#convolve(int[], double[], int)">convolve</a></strong>(int[]&nbsp;data,
-        double[]&nbsp;gaussian,
-        int&nbsp;numberOfSamples)</code>
-<div class="block">convolve
-                          convolve data with a normalised gaussian in order
-                          to smooth the output after reducing sample rate</div>
-</td>
-</tr>
-<tr class="altColor">
-<td class="colFirst"><code>static double</code></td>
-<td class="colLast"><code><strong><a href="StatsUtil.html#covariance(double, double, double[][])">covariance</a></strong>(double&nbsp;xVariance,
-          double&nbsp;yVariance,
-          double[][]&nbsp;data)</code>
-<div class="block">covariance
-                   Works out the fit of the data</div>
-</td>
-</tr>
-<tr class="rowColor">
-<td class="colFirst"><code>static double</code></td>
-<td class="colLast"><code><strong><a href="StatsUtil.html#covariance(double, double, double[], double[])">covariance</a></strong>(double&nbsp;xVariance,
-          double&nbsp;yVariance,
-          double[]&nbsp;x,
-          double[]&nbsp;y)</code>
-<div class="block">covariance
-                  Works out the fit of the data</div>
-</td>
-</tr>
-<tr class="altColor">
-<td class="colFirst"><code>static double</code></td>
-<td class="colLast"><code><strong><a href="StatsUtil.html#errorFit(double)">errorFit</a></strong>(double&nbsp;stdFit)</code>&nbsp;</td>
-</tr>
-<tr class="rowColor">
-<td class="colFirst"><code>static double</code></td>
-<td class="colLast"><code><strong><a href="StatsUtil.html#errorGradient(double, double, int)">errorGradient</a></strong>(double&nbsp;xVariance,
-             double&nbsp;rss,
-             int&nbsp;n)</code>
-<div class="block">errorGradient
-                  Gives the error in the gradient</div>
-</td>
-</tr>
-<tr class="altColor">
-<td class="colFirst"><code>static double</code></td>
-<td class="colLast"><code><strong><a href="StatsUtil.html#errorOffset(double, double, double, double)">errorOffset</a></strong>(double&nbsp;n,
-           double&nbsp;xVariance,
-           double&nbsp;xMean,
-           double&nbsp;rss)</code>
-<div class="block">errorOffset
-              Gives the error in the offset in a linear fit</div>
-</td>
-</tr>
-<tr class="rowColor">
-<td class="colFirst"><code>static double[]</code></td>
-<td class="colLast"><code><strong><a href="StatsUtil.html#fit(double[][], double, double)">fit</a></strong>(double[][]&nbsp;data,
-   double&nbsp;gradient,
-   double&nbsp;offset)</code>
-<div class="block">fit
-                   Works out the fit of a linear data set from a 2D array,
-                   where x = [i][0] and y = [j][1]</div>
-</td>
-</tr>
-<tr class="altColor">
-<td class="colFirst"><code>static double[]</code></td>
-<td class="colLast"><code><strong><a href="StatsUtil.html#fit(double[], double, double)">fit</a></strong>(double[]&nbsp;x,
-   double&nbsp;gradient,
-   double&nbsp;offset)</code>
-<div class="block">fit
-                   Works out the fit of the data</div>
-</td>
-</tr>
-<tr class="rowColor">
-<td class="colFirst"><code>static double[]</code></td>
-<td class="colLast"><code><strong><a href="StatsUtil.html#gaussian(int, double, double)">gaussian</a></strong>(int&nbsp;numberOfSamples,
-        double&nbsp;variance,
-        double&nbsp;mean)</code>
-<div class="block">gaussian
-                         Transform data into a normalised gaussian</div>
-</td>
-</tr>
-<tr class="altColor">
-<td class="colFirst"><code>static double</code></td>
-<td class="colLast"><code><strong><a href="StatsUtil.html#gradient(double, double)">gradient</a></strong>(double&nbsp;covariance,
-        double&nbsp;xVariance)</code>
-<div class="block">gradient
-                   Works out the standard deviation of least squares fit</div>
-</td>
-</tr>
-<tr class="rowColor">
-<td class="colFirst"><code>static double</code></td>
-<td class="colLast"><code><strong><a href="StatsUtil.html#linearCorrelationCoefficient(double, double)">linearCorrelationCoefficient</a></strong>(double&nbsp;regressionSumOfSquares,
-                            double&nbsp;yVariance)</code>
-<div class="block">linearCorrelationCoefficient
-                              Linear correlation coefficient found when we
-                              calculate the regression sum of squares over
-                              the variance given in y.</div>
-</td>
-</tr>
-<tr class="altColor">
-<td class="colFirst"><code>static double</code></td>
-<td class="colLast"><code><strong><a href="StatsUtil.html#mean(double[])">mean</a></strong>(double[]&nbsp;data)</code>
-<div class="block">mean
-                   Works out the mean value of supplied data</div>
-</td>
-</tr>
-<tr class="rowColor">
-<td class="colFirst"><code>static double</code></td>
-<td class="colLast"><code><strong><a href="StatsUtil.html#regressionSumOfSquares(double[], double)">regressionSumOfSquares</a></strong>(double[]&nbsp;fit,
-                      double&nbsp;mean)</code>
-<div class="block">regressionSumOfSquares
-                               Calculates regression sum of squares</div>
-</td>
-</tr>
-<tr class="altColor">
-<td class="colFirst"><code>static double[]</code></td>
-<td class="colLast"><code><strong><a href="StatsUtil.html#residuals(double[], double[])">residuals</a></strong>(double[]&nbsp;y,
-         double[]&nbsp;fit)</code>
-<div class="block">residuals
-                  Difference between y from the least squares fit and the actual data</div>
-</td>
-</tr>
-<tr class="rowColor">
-<td class="colFirst"><code>static double</code></td>
-<td class="colLast"><code><strong><a href="StatsUtil.html#standardDeviation(double, int)">standardDeviation</a></strong>(double&nbsp;variance,
-                 int&nbsp;n)</code>
-<div class="block">standardDeviation
-                   Works out the standard deviation of least squares fit</div>
-</td>
-</tr>
-<tr class="altColor">
-<td class="colFirst"><code>static double</code></td>
-<td class="colLast"><code><strong><a href="StatsUtil.html#standardError(double[][], double[])">standardError</a></strong>(double[][]&nbsp;data,
-             double[]&nbsp;fit)</code>
-<div class="block">standardError
-                  Gives the residual sum of squares.</div>
-</td>
-</tr>
-<tr class="rowColor">
-<td class="colFirst"><code>static double</code></td>
-<td class="colLast"><code><strong><a href="StatsUtil.html#standardError(double[], double[])">standardError</a></strong>(double[]&nbsp;y,
-             double[]&nbsp;fit)</code>
-<div class="block">standardError
-                  Gives the residual sum of squares.</div>
-</td>
-</tr>
-<tr class="altColor">
-<td class="colFirst"><code>static double</code></td>
-<td class="colLast"><code><strong><a href="StatsUtil.html#variance(double[], double)">variance</a></strong>(double[]&nbsp;data,
-        double&nbsp;mean)</code>
-<div class="block">variance
-          Works out the difference of least squares fit</div>
-</td>
-</tr>
-<tr class="rowColor">
-<td class="colFirst"><code>static double</code></td>
-<td class="colLast"><code><strong><a href="StatsUtil.html#yIntercept(double, double, double)">yIntercept</a></strong>(double&nbsp;xMean,
-          double&nbsp;yMean,
-          double&nbsp;gradient)</code>
-<div class="block">yIntercept
-                   Works out the offset of the data (i.e the constant
-                   Value by which y is offset)</div>
-</td>
-</tr>
-</table>
-<ul class="blockList">
-<li class="blockList"><a name="methods_inherited_from_class_java.lang.Object">
-<!--   -->
-</a>
-<h3>Methods inherited from class&nbsp;java.lang.Object</h3>
-<code>clone, equals, finalize, getClass, hashCode, notify, notifyAll, toString, wait, wait, wait</code></li>
-</ul>
-</li>
-</ul>
-</li>
-</ul>
-
 <h2>
 <a name="gaussian-one-student-ability" class="anchor" href="#gaussian-one-student-ability"><span class="octicon octicon-link"></span></a>Gaussian One: Student Ability</h2>
 
@@ -386,7 +189,7 @@ extends java.lang.Object</pre>
 <li>Number of students present in the exam: 17</li>
 <li>Number of students who passed the exam: 17</li>
 </ul><p>Average mark of the course (includes only those students who sat the exam): 72.35%</p>
-
+<p>Pass mark for the course (includes only those students who sat the exam): 100%</p>
 <h3>
 <a name="4-quantum-mechanics" class="anchor" href="#4-quantum-mechanics"><span class="octicon octicon-link"></span></a>4. <a href="https://www.wiki.ed.ac.uk/download/attachments/135806883/Quantum%20Mechanics%202012-13%20S1%20-%20wiki.pdf?version=1&amp;modificationDate=1371462818000&amp;api=v2">Quantum Mechanics</a>
 </h3>
@@ -413,6 +216,7 @@ extends java.lang.Object</pre>
 <li>Number of students present in the exam: 63</li>
 <li>Number of students who passed the exam: 63</li>
 </ul><p>Average mark of the course (includes only those students who sat the exam): 63.41%</p>
+<p>Pass mark for the course (includes only those students who sat the exam): 100%</p>
 
 <h3>
 <a name="7physical-mathematics" class="anchor" href="#7physical-mathematics"><span class="octicon octicon-link"></span></a>7.<a href="https://www.wiki.ed.ac.uk/download/attachments/135806883/Physical%20Mathematics%202012-13%20-%20wiki.pdf?version=1&amp;modificationDate=1372246724000&amp;api=v2">Physical Mathematics</a>
@@ -451,6 +255,7 @@ extends java.lang.Object</pre>
 <li>Number of students present in the exam: 69</li>
 <li>Number of students who passed the exam: 68</li>
 </ul><p>Average mark of the course (includes only those students who sat the exam): 68.5%</p>
+<p>Pass mark for the course (includes only those students who sat the exam): 98.56%</p>
 
 <h3>
 <a name="11-statistical-physics" class="anchor" href="#11-statistical-physics"><span class="octicon octicon-link"></span></a>11. <a href="https://www.wiki.ed.ac.uk/download/attachments/135806883/Statistical%20Physics-%20wiki.pdf?version=1&amp;modificationDate=1371477305000&amp;api=v2">Statistical Physics</a>
