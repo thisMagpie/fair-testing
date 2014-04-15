@@ -10,8 +10,8 @@ if test -s /usr/bin/java ; then
     cd ..
 fi
 
-if test -s java/output/exi-population.dat && test -s java/output/existing-grades.tex ; then
-    if test -s which pdflatex; then
-    echo "Compiling Population Gaussian Graph"
-    fi
+if test -s java/output/recorded-population-grades.dat; then
+    echo "Compiling population Gaussian graph using pgfplots"
+    pdflatex java/output/existing-grades.tex
+    echo "Open the pdf in your browser window now"
 fi
