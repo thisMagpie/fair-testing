@@ -24,13 +24,15 @@ public class ProbabilityUtil{
 
     /**
      * percentage
-     *                          Work out the percentage of a sample taken from the total.
+     *                          Work out the percentage of a sample taken from
+     *                          the total.
      * @param expectedError
      *                          The percentageError
      * @param expectedScore
      *                          expectedScore
      * @return
-     *                          The percentage of a sample taken from the total as a double
+     *                          The percentage of a sample taken from the total
+     *                          as a double
      */
     public static double percentErrorEstimate(double expectedError, int expectedScore){
         return (double) expectedError * expectedScore;
@@ -48,9 +50,11 @@ public class ProbabilityUtil{
      *                          Total number of trials to take
      * @return
      *                          The predicted scores of a sample taken from the total as a double
-                                plus or minus the error estimate on them.
+     *                          plus or minus the error estimate on them.
      */
-    public static double[] predictedScores(double multiplier, int numberTrials, int expectedResult){
+    public static double[] predictedScores(double multiplier,
+                                           int numberTrials,
+                                           int expectedResult) {
         Random random = new Random();
         double[] temp = new double[numberTrials];
         for (int i = 0; i < numberTrials; i++){
