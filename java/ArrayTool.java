@@ -24,7 +24,7 @@ class ArrayTool {
    /**
     * @initArray
     *
-    * @param
+    * @param length
     *
     *
     * @return
@@ -44,11 +44,10 @@ class ArrayTool {
     * @return
     *
     */
-
     public static double[] multiply(double[] data, double value) {
-        for (int i= 0; i < data.length; i++) {
+        for (int i = 0; i < data.length; i++) {
             data[i] *= value;
-            System.out.print("CHECK \n"+ data[i]); //TODO remove
+            System.out.println("CHECK "+ data[i]);
         }
         return data;
     }
