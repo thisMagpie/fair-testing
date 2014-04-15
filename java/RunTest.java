@@ -1,6 +1,6 @@
 /**
  * RunTest.java
- * ==============
+ * ============
  *
  * This file is a part of a program which serves as a utility for prediction
  * and data analysis of experimental and simulated data
@@ -28,7 +28,8 @@ public class RunTest {
         String population = "/recorded-population-grades.dat";
         Scanner scan = IOUtil.scanFrom("input" + population);
 
-        //retrieve scanner and length of data already indicated in input file
+        //retrieve scanner and length of data range of results
+        // which has already been indicated in input file
         double[] recordedPopulationResults = ArrayIOUtil.readDoubles(scan, IOUtil.skipToInt(scan));
         writeDistribution(IOUtil.writeTo("output" + population), recordedPopulationResults);
         ArrayIOUtil.printDoubles(recordedPopulationResults);
