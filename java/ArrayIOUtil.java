@@ -73,21 +73,25 @@ public class ArrayIOUtil extends IOUtil{
 
 
    /**
-    * @readDouble
+    * @readDoubles
+    *                   Static method to read data from file
     *
-    * @param
-    *
-    *
+    * @param scanned
+    *                   Scanner to read element from file
+    * @param length
+    *                   Length of double array contained in file
     * @return
-    *               Array of doubles
+    *                   Array of doubles
     *
     */
-    public static double[] readDoubles(Scanner scanned, int length){
-        double[] data=new double[length];
-        for (int i= 0; i < data.length; i++) data[i] = IOUtil.skipToDouble(scanned);
+    public static double[] readDoubles(Scanner scanned, int length) {
+        double[] data = new double[length];
+        for (int i = 0; i < length; i++) {
+            data[i] = 0; // init each element in array
+            data[i] = IOUtil.skipToDouble(scanned); //read only double
+        }
         return data;
     }
-
 
    /**
     * @readDouble
@@ -98,10 +102,10 @@ public class ArrayIOUtil extends IOUtil{
     * @return
     *
     */
-    public static double[][] readDoubles(Scanner scanned, int length, int numberOfColumns){
-        double[][] data = new double[length][numberOfColumns];
-        for (int i= 0;i < data.length;i++) {
-            for (int j=0;j<data[1].length;j++) {
+    public static double[][] readDoubles(Scanner scanned, int rows, int columns){
+        double[][] data = new double[rows][columns];
+        for (int i= 0; i < data.length;i++) {
+            for (int j= 0; j < data[1].length;j++) {
                 data[i][j] = IOUtil.skipToDouble(scanned); //TODO check
             }
         }
