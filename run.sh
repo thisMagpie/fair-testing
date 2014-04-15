@@ -15,3 +15,8 @@ if test -s java/output/recorded-population-grades.dat; then
     pdflatex java/output/existing-grades.tex
     echo "Open the pdf in your browser window now"
 fi
+
+# Generate JavaDocs
+if test -s /usr/bin/javadoc ; then
+    javadoc -d /home/magpie/fair-testing/java/docs -sourcepath /home/magpie/fair-testing/java/*.java -verbose
+fi

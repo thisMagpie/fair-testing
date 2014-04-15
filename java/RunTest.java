@@ -1,15 +1,9 @@
 /**
- * RunTest.java
- * ============
- *
- * This file is a part of a program which serves as a utility for prediction
- * and data analysis of experimental and simulated data
- *
  * Copyright (C) 2014 Magdalen Berns <m.berns@sms.ed.ac.uk>
  *
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
- * the Free Software Foundation, either version 3 of the License, or
+ * the Free Software Foundation, either version 2 of the License, or
  * (at your option) any later version.
  * This program is distributed in the hope that it will be useful,
  * but WITHOUT ANY WARRANTY; without even the implied warranty of
@@ -24,18 +18,30 @@ import java.util.Scanner;
 
 public class RunTest {
 
+/**
+ * This file is a part of a program which serves as a utility for prediction and
+ * data analysis of experimental and simulated data Test Class to run Simulation
+ * of system of fair trials.
+ *
+ * @author Magdalen Berns
+ * @version 1.0
+ * @since 1.0
+ */
+
     public static void main(String[] argsv) throws IOException, FileNotFoundException {
         String population = "/recorded-population-grades.dat";
         Scanner scan = IOUtil.scanFrom("input" + population);
 
-        //retrieve scanner and length of data range of results
-        // which has already been indicated in input file
+        BubbleSort.Doubles(data);
+
+        //retrieve scanner and length
         double[] recordedPopulationResults = ArrayIOUtil.readDoubles(scan, IOUtil.skipToInt(scan));
+
         writeDistribution(IOUtil.writeTo("output" + population), recordedPopulationResults);
         ArrayIOUtil.printDoubles(recordedPopulationResults);
     }
 
-    public static void writeDistribution(PrintWriter writeTo, double data[]) {
+    public static void writeDistribution(PrintWriter writeTo, double data[]) { //TODO give it a class
         double mean                 = StatsUtil.mean(data);
         double variance             = StatsUtil.variance(data, mean);
         double standardDeviation    = StatsUtil.standardDeviation(
@@ -50,6 +56,6 @@ public class RunTest {
                             standardDeviation);
 
         ArrayIOUtil.writeDoubles(writeTo, gaussian);
-        ArrayIOUtil.printDoubles(gaussian); //TODO remove later
+        ArrayIOUtil.printDoubles(gaussian); //TODO remove later. For dbug
     }
 }

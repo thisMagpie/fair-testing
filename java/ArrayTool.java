@@ -1,7 +1,4 @@
 /**
- * ArrayTool.java
- * ================
- *
  * This file is a part of a program which serves as a utility for prediction
  * and data analysis of experimental and simulated data
  *
@@ -22,32 +19,20 @@
 class ArrayTool {
 
    /**
-    * @initArray
-    *
-    * @param length
-    *
-    *
-    * @return
-    *               Initialised 2D integer array
-    */
-    public static int[][] initArray(int length){
-        return new int[length][length];
-    }
-
-   /**
-    * @multiply
-    *               Function to multiply array
+    * multiply
+    *               Function to multiply each element of a 1D array of doubles to analysis
+    *               single double instance value.and then return a 1D array of the result
     *
     * @param
-    *
-    *
+    *               Multiply elements of array by a double instance
     * @return
+    *               return 1D array of doubles
     *
     */
     public static double[] multiply(double[] data, double value) {
         for (int i = 0; i < data.length; i++) {
             data[i] *= value;
-            System.out.println("CHECK "+ data[i]);
+            System.out.println("CHECK "+ data[i]);//TODO remove later
         }
         return data;
     }
