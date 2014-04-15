@@ -16,15 +16,14 @@
   <body>
     <div class="wrapper">
       <header>
-        <h1 class="header">Fair-Testing</h1>
-        <p class="header">Devising a fair system of trials: The online lab book</p>
-
+        <h1 class="header">Devising a Fair System of Trials</h1>
+        <p class="header">The Online Lab Book</p>
         <ul>
           <li class="download"><a class="buttons" href="https://github.com/thisMagpie/fair-testing/zipball/master">Download ZIP</a></li>
           <li class="download"><a class="buttons" href="https://github.com/thisMagpie/fair-testing/tarball/master">Download TAR</a></li>
           <li><a class="buttons github" href="https://github.com/thisMagpie/fair-testing">View On GitHub</a></li>
+          
         </ul>
-
         <p class="header">This project is maintained by <a class="header name" href="https://github.com/thisMagpie">thisMagpie</a></p>
 
 
@@ -81,8 +80,65 @@ pdflatex output-datafile.tex
 <p>That includes the commit history (and messages) for the codes as well as the notes wiki and reading list are also available to view via this website. </p>
 
 <h1>
-<a name="initial-test-parameters" class="anchor" href="#initial-test-parameters"><span class="octicon octicon-link"></span></a>Initial Test Parameters</h1>
+<a name="API Documentation" class="anchor" href="#api-documentation"><span class="octicon octicon-link"></span></a>API Documentation</h1>
+<!-- ======== START OF CLASS DATA ======== -->
+<h2>Class StatsUtil</h2>
 
+<ul class="inheritance">
+<li>java.lang.Object</li>
+<li>
+<ul class="inheritance">
+<li>StatsUtil</li>
+</ul>
+</li>
+</ul>
+<div class="description">
+<ul class="blockList">
+<li class="blockList">
+<hr>
+<br>
+<pre>public class <span class="strong">StatsUtil</span>
+extends java.lang.Object</pre>
+<div class="block">StatsUtil.java
+
+ This file is a part of a program which serves as a utility for prediction
+ and data analysis of experimental and simulated data
+
+ Copyright (C) 2012-2014  Magdalen Berns <m.berns@sms.ed.ac.uk>
+
+ This program is free software: you can redistribute it and/or modify
+ it under the terms of the GNU General Public License as published by
+ the Free Software Foundation, either version 3 of the License, or
+ (at your option) any later version.
+ This program is distributed in the hope that it will be useful,
+ but WITHOUT ANY WARRANTY; without even the implied warranty of
+ MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ GNU General Public License for more details.
+ You should have received a copy of the GNU General Public License
+ along with this program.  If not, see <http://www.gnu.org/licenses/></div>
+</li>
+</ul>
+</div>
+<div class="summary">
+<ul class="blockList">
+<li class="blockList">
+<!-- ======== CONSTRUCTOR SUMMARY ======== -->
+<ul class="blockList">
+<li class="blockList"><a name="constructor_summary">
+<!--   -->
+</a>
+<h3>Constructor Summary</h3>
+<table class="overviewSummary" border="0" cellpadding="3" cellspacing="0" summary="Constructor Summary table, listing constructors, and an explanation">
+<caption><span>Constructors</span><span class="tabEnd">&nbsp;</span></caption>
+<tr>
+<th class="colOne" scope="col">Constructor and Description</th>
+</tr>
+<tr class="altColor">
+<td class="colOne"><code><strong><a href="StatsUtil.html#StatsUtil()">StatsUtil</a></strong>()</code>&nbsp;</td>
+</tr>
+</table>
+</li>
+</ul>
 <h2>
 <a name="gaussian-one-student-ability" class="anchor" href="#gaussian-one-student-ability"><span class="octicon octicon-link"></span></a>Gaussian One: Student Ability</h2>
 
@@ -98,11 +154,12 @@ pdflatex output-datafile.tex
 <h3>
 <a name="1-stellar-evolution" class="anchor" href="#1-stellar-evolution"><span class="octicon octicon-link"></span></a>1. <a href="https://www.wiki.ed.ac.uk/download/attachments/135806883/Stellar%20Evolution-%20wiki.pdf?version=1&amp;modificationDate=1372244111000&amp;api=v2">Stellar Evolution</a>
 </h3>
-
 <ul>
 <li>Number of students present in the exam: 18</li>
 <li>Number of students who passed the exam: 16</li>
-</ul><p>Average mark of the course (includes only those students who sat the exam): 61%</p>
+</ul>
+<p>Average mark of the course 61%</p>
+<p>Average pass rate of the the course 88.89%</p>
 
 <h3>
 <a name="2-astrophysics-3-exam-scaled-up-by-3" class="anchor" href="#2-astrophysics-3-exam-scaled-up-by-3"><span class="octicon octicon-link"></span></a>2. <a href="https://www.wiki.ed.ac.uk/download/attachments/135806883/Astrophysics%203%20wiki.pdf?version=1&amp;modificationDate=1372243932000&amp;api=v2">Astrophysics 3 Exam</a> (Scaled Up by 3%)</h3>
@@ -110,7 +167,8 @@ pdflatex output-datafile.tex
 <ul>
 <li>Number of students present in the exam: 37</li>
 <li>Number of students who passed the exam: 29</li>
-</ul><p>Average mark of the course (includes only those students who sat the exam) : 48%</p>
+</ul><p>Average mark of the course 48%</p>
+</ul><p>Average pass rate of the the course 78.38%</p>
 
 <p>NOTE: The grade was scaled by an average of 3% to raise the class average to 51%</p>
 
@@ -131,7 +189,7 @@ pdflatex output-datafile.tex
 <li>Number of students present in the exam: 17</li>
 <li>Number of students who passed the exam: 17</li>
 </ul><p>Average mark of the course (includes only those students who sat the exam): 72.35%</p>
-
+<p>Pass mark for the course (includes only those students who sat the exam): 100%</p>
 <h3>
 <a name="4-quantum-mechanics" class="anchor" href="#4-quantum-mechanics"><span class="octicon octicon-link"></span></a>4. <a href="https://www.wiki.ed.ac.uk/download/attachments/135806883/Quantum%20Mechanics%202012-13%20S1%20-%20wiki.pdf?version=1&amp;modificationDate=1371462818000&amp;api=v2">Quantum Mechanics</a>
 </h3>
@@ -158,6 +216,7 @@ pdflatex output-datafile.tex
 <li>Number of students present in the exam: 63</li>
 <li>Number of students who passed the exam: 63</li>
 </ul><p>Average mark of the course (includes only those students who sat the exam): 63.41%</p>
+<p>Pass mark for the course (includes only those students who sat the exam): 100%</p>
 
 <h3>
 <a name="7physical-mathematics" class="anchor" href="#7physical-mathematics"><span class="octicon octicon-link"></span></a>7.<a href="https://www.wiki.ed.ac.uk/download/attachments/135806883/Physical%20Mathematics%202012-13%20-%20wiki.pdf?version=1&amp;modificationDate=1372246724000&amp;api=v2">Physical Mathematics</a>
@@ -196,6 +255,7 @@ pdflatex output-datafile.tex
 <li>Number of students present in the exam: 69</li>
 <li>Number of students who passed the exam: 68</li>
 </ul><p>Average mark of the course (includes only those students who sat the exam): 68.5%</p>
+<p>Pass mark for the course (includes only those students who sat the exam): 98.56%</p>
 
 <h3>
 <a name="11-statistical-physics" class="anchor" href="#11-statistical-physics"><span class="octicon octicon-link"></span></a>11. <a href="https://www.wiki.ed.ac.uk/download/attachments/135806883/Statistical%20Physics-%20wiki.pdf?version=1&amp;modificationDate=1371477305000&amp;api=v2">Statistical Physics</a>
@@ -264,7 +324,6 @@ pdflatex output-datafile.tex
 <a name="authors-and-contributors" class="anchor" href="#authors-and-contributors"><span class="octicon octicon-link"></span></a>Authors and Contributors</h3>
 
 <p>Magdalen Berns <a href="http://osrc.dfm.io/thismagpie">@thisMagpie</a></p>
-
 <p>Supervisor: Prof. Graeme Ackland</p>
 
 <p>With Special thanks to Dr.Victoria Martin, Alys Jepson, Professor F Muheim, Malcolm I. McMahon FRSE FInstP, Laura Gonzalez-Rienda and the Teaching Office Team.</p>
@@ -274,6 +333,5 @@ pdflatex output-datafile.tex
       </footer>
     </div>
     <!--[if !IE]><script>fixScale(document);</script><![endif]-->
-		
   </body>
 </html>

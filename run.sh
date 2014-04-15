@@ -1,5 +1,25 @@
 #!/bin/bash
 
+
+for i in *; do
+  if [ -d $i ]; then
+    cd $i;
+    if [[ -n 'ls | grep *.log' ]]; then
+      echo -n " " $i-; rm *.log; echo -n;
+    fi
+    if [[ -n 'ls | grep *.aux' ]]; then
+      echo -n " " $i-; rm *.aux; echo -n;
+    fi
+    if [[ -n 'ls | grep *.class' ]]; then
+      echo -n " " $i-; rm *.class; echo -n;
+    fi
+    if [[ -n 'ls | grep *.*~' ]]; then
+      echo -n " " $i-; rm *.*~; echo -n;
+    fi
+    cd ..
+  fi
+done
+
 if test -s /usr/bin/java ; then
     echo "Compiling Source Code"
     javac java/*.java
