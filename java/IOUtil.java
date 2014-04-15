@@ -23,7 +23,7 @@ import java.io.*;
 public class IOUtil{
 
     /**
-    * skipToDouble
+    * @skipToDouble
     *                   Method to read only numbers in decimal form from a given input file
     *                   This makes it possible to input data with handy human readable labels 
     * @param scanner
@@ -47,8 +47,8 @@ public class IOUtil{
         return keyIn.readLine();
     }
 
-    /**
-    * skipToInt
+   /**
+    * @skipToInt
     *                   Method to read only numbers in integer form from a given input file
     *                   This makes it possible to input data with handy human readable labels 
     * @param scanner
@@ -79,7 +79,30 @@ public class IOUtil{
         return typed;
     }
 
-    public static String enterValue(String kindOf) { //TODO probably wont need this
-        return "Enter " + kindOf + "value:";
+   /**
+    * @scanFrom
+    *                   Method to query whether file is there and if so create a scanner onject
+    *                   So that content can be read
+    * @param name
+    *                   name and relative path of file to be scanned from
+    * @return
+    *                   Scanner object for reading elements from file with specified name
+    */
+    public static Scanner scanFrom(String name) throws FileNotFoundException {
+        return new Scanner(new BufferedReader(new FileReader(name)));
+    }
+
+
+   /**
+    * @writeTo
+    *                   Method to create filename if not already in relative path
+    *                   or overwrite existing file contents if filename is already in existance.
+    * @param name
+    *                   name and relative path of file to be written to.
+    * @return
+    *                   Printwriter object for writing elements to file with specified name
+    */
+    public static PrintWriter writeTo(String name) throws FileNotFoundException {
+        return new PrintWriter(name);
     }
 }
