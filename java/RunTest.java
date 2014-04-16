@@ -23,22 +23,36 @@ public class RunTest {
  * data analysis of experimental and simulated data Test Class to run Simulation
  * of system of fair trials.
  *
- * @author Magdalen Berns
+ * @author Magdalen Berns Copyright (C) 2014
+ * @email <m.berns@sms.ed.ac.uk>
  * @version 1.0
- * @since 1.0
  */
 
-    public static void main(String[] argsv) throws IOException, FileNotFoundException {
-        String population = "population-grades.dat";
-        Scanner scan = IOUtil.scanFrom("input/recorded-" + population);
+    public static void main(String[] argsv) throws IOException,
+                                                   FileNotFoundException {
 
-        BubbleSort.Doubles(data);
+        String input                                    = "input/";
+        String output                                   = "../latex/data";
+        String population                               = "recorded-population-grades.dat";
+        Scanner scanPopulation                          = IOUtil.scanFrom(population);
+
+        PrintWriter outputPopulation                    = new PrintWriter(output + "population.dat");
+        PrintWriter outputMaster10                      = new PrintWriter(output + "master10.dat");
+
+        String master10Credits                          = "recorded-individual-master.dat";
+        String master20Credits                          = "recorded-individual-master-20.dat";
+        Scanner scanMaster10                            = IOUtil.scanFrom(master10Credits);
+        Scanner scanMaster20                            = IOUtil.scanFrom(master20Credits);
 
         //retrieve scanner and length
-        double[] recordedPopulationResults = ArrayIOUtil.readDoubles(scan, IOUtil.skipToInt(scan));
+        double[] recordedPopulationResults = ArrayIOUtil.readDoubles(scanPopulation,
+                                                                     IOUtil.skipToInt(scanPopulation));
+        double[] recordedMasterResults = ArrayIOUtil.readDoubles(scanPopulation,
+                                                                 IOUtil.skipToInt(scanMaster10));
 
-        writeDistribution(IOUtil.writeTo("population-grades.dat" + population), recordedPopulationResults);
-        ArrayIOUtil.printDoubles(recordedPopulationResults);
+        // write out results and print to terminal and concatinate to organise output file dir location
+        writeDistribution(outputPopulation, recordedPopulationResults);
+        writeDistribution(outputMaster10, recordedMasterResults);
     }
 
     public static void writeDistribution(PrintWriter writeTo, double data[]) { //TODO give it a class
@@ -56,6 +70,6 @@ public class RunTest {
                             standardDeviation);
 
         ArrayIOUtil.writeDoubles(writeTo, gaussian);
-        ArrayIOUtil.printDoubles(gaussian); //TODO remove later. For dbug
+        ArrayIOUtil.printDoubles(gaussian);
     }
 }

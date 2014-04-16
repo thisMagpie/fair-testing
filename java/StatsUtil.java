@@ -117,7 +117,7 @@ public class StatsUtil{
      */
     public static double standardDeviation(double variance, int n){
         double stdDev = 0.0;
-        if(n > 0) stdDev = Math.sqrt(variance) / (n - 1);
+        if(n > 0) stdDev = Math.sqrt(variance) / n;
         return stdDev;
     }
 
@@ -366,11 +366,11 @@ public class StatsUtil{
         double tempGaussian= 0.0;
 
         for (int i=0; i < data.length; i++) {
-            gaussian[i] = 1 / (standardDeviation * Math.sqrt(period * 2)) * variance / (2 * Math.pow(standardDeviation. 2));
+            gaussian[i] = 1 / (standardDeviation * Math.sqrt(period * 2)) * variance / (2 * Math.pow(standardDeviation, 2));
             tempGaussian += gaussian[i];
         }
         
-        for (int i=0; i< numberOfSamples; i++){
+        for (int i=0; i< data.length; i++){
             gaussian[i] /= tempGaussian;
         }
         return gaussian;
@@ -393,7 +393,7 @@ public class StatsUtil{
         double convolved[] = new double[data.length - (numberOfSamples + 1)];
         for (int i=0; i < convolved.length; i++){
             convolved[i] = 0.0;
-            for (int j=i, k = 0; j< i + numberOfSamples; j++, k++){
+            for (int j = i, k = 0; j < i + numberOfSamples; j++, k++){
                 convolved[i] +=  data[j] * gaussian[k];
             }
         }
@@ -416,11 +416,11 @@ public class StatsUtil{
      */ 
     public static double[] convolve(double[] g1, double[] g2) { //TODO test
         double convolved[] = new double[g1.length - (g2.length + 1)];
- 
-        for (int i=0; i<convolved.length; i++) {
+
+        for (int i=0; i < convolved.length; i++) {
             convolved[i] = 0.0;
             for (int j=i, k=0; j < i + g2.length; j++, k++) convolved[i] += g1[j] * g2[k];
         }
         return convolved;
-    }   
+    }
 }
