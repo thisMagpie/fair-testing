@@ -1,8 +1,7 @@
 /**
- * This file is a part of a program which serves as a utility for prediction
- * and data analysis of experimental and simulated data
- *
- * Copyright (C) 2014 Magdalen Berns <m.berns@sms.ed.ac.uk>
+ * @author Magdalen Berns Copyright (C) 2014
+ * @email <m.berns@sms.ed.ac.uk>
+ * @version 1.0
  *
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -20,14 +19,11 @@ class ArrayTool {
 
    /**
     * multiply
-    *               Function to multiply each element of a 1D array of doubles to analysis
-    *               single double instance value.and then return a 1D array of the result
+    *           Function to multiply each element of a 1D array of doubles to analysis
+    *           single double instance value.and then return a 1D array of the result
     *
-    * @param
-    *               Multiply elements of array by a double instance
-    * @return
-    *               return 1D array of doubles
-    *
+    * @param Multiply elements of array by a double instance
+    * @return return 1D array of doubles
     */
     public static double[] multiply(double[] data, double value) {
         for (int i = 0; i < data.length; i++) {
