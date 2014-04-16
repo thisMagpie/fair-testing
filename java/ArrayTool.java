@@ -1,8 +1,4 @@
 /**
- * @author Magdalen Berns Copyright (C) 2014
- * @email <m.berns@sms.ed.ac.uk>
- * @version 1.0
- *
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation, either version 2 of the License, or
@@ -17,8 +13,15 @@
 
 class ArrayTool {
 
+/**
+ * @author Magdalen Berns Copyright (C) 2014
+ * @email <m.berns@sms.ed.ac.uk>
+ * @version 1.0
+ */
+
    /**
     * multiply
+    *
     *           Function to multiply each element of a 1D array of doubles to analysis
     *           single double instance value.and then return a 1D array of the result
     *
@@ -28,7 +31,7 @@ class ArrayTool {
     public static double[] multiply(double[] data, double value) {
         for (int i = 0; i < data.length; i++) {
             data[i] *= value;
-            System.out.println("CHECK "+ data[i]);//TODO remove later
+            System.out.println("CHECK \n"+ data[i]);//TODO remove later
         }
         return data;
     }

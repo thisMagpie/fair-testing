@@ -19,7 +19,7 @@ import java.io.*;
 public class IOUtil {
 
 /**
- * This file provides a library of static methods for handling common 
+ * This file provides a library of static methods for handling common
  * IO requirements.
  *
  * @author Magdalen Berns
