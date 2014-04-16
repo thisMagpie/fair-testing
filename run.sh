@@ -1,6 +1,5 @@
 #!/bin/bash
 
-
 for i in *; do
   if [ -d $i ]; then
     cd $i;
@@ -30,13 +29,17 @@ if test -s /usr/bin/java ; then
     cd ..
 fi
 
-if test -s java/output/recorded-population-grades.dat; then
+if test -s /usr/bin/pdflatex ; then
+    cd java/output
     echo "Compiling population Gaussian graph using pgfplots"
-    pdflatex java/output/existing-grades.tex
+    pdflatex existing-grades.tex master10.tex
     echo "Open the pdf in your browser window now"
 fi
 
 # Generate JavaDocs
 if test -s /usr/bin/javadoc ; then
     javadoc -d /home/magpie/fair-testing/java/docs -sourcepath /home/magpie/fair-testing/java/*.java -verbose
+    if test -s firefox ; then
+        nohup firefox ~/fair-testing/java/docs/index.html &
+    fi
 fi
