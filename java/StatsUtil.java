@@ -252,7 +252,7 @@ public class StatsUtil{
      * @return
      *                  Array of doubles holding the data's residual points
      */
-    public static double[] residuals(double[] y, double[] fit){
+    public static double[] residuals(double[] y, double[] fit) {
         double[] residuals=new double[y.length];
         for (int i = 0; i < y.length; i++)
             residuals[i] = y[i] - fit[i];
@@ -370,7 +370,7 @@ public class StatsUtil{
             tempGaussian += gaussian[i];
         }
         
-        for (int i=0; i< data.length; i++){
+        for (int i=0; i< data.length; i++) {
             gaussian[i] /= tempGaussian;
         }
         return gaussian;

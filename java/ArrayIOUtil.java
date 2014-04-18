@@ -1,10 +1,4 @@
 /**
- * ArrayIOUtil.java
- * ==============
- *
- * This file is a part of a program which serves as a utility for prediction
- * and data analysis of experimental and simulated data
- *
  * Copyright (C) 2014 Magdalen Berns <m.berns@sms.ed.ac.uk>
  *
  * This program is free software: you can redistribute it and/or modify
@@ -22,14 +16,22 @@
 import java.io.*;
 import java.util.Scanner;
 
-public class ArrayIOUtil extends IOUtil{
+public class ArrayIOUtil extends IOUtil {
 
+/**
+ * @author Magdalen Berns Copyright (C) 2014
+ * @email <m.berns@sms.ed.ac.uk>
+ * @version 1.0
+ *
+ * This file is a part of a program which serves as a utility for prediction
+ * and data analysis of experimental and simulated data
+ */
 
    /**
-    * @printDoubles
-    *
-    * @param data
-    *
+    * printDoubles      A static method which loops over array elements and spits
+    *                   the output to terminal.
+    *                   Static method to write data from file with
+    * @para,data        The 2D array of doubles to read
     */
     public static void printDoubles(double[] data) {
          for (int i=1; i < data.length + 1; i++) {
@@ -37,16 +39,11 @@ public class ArrayIOUtil extends IOUtil{
         }
     }
 
-
-
    /**
-    * @writeDoubles
-    *                   Static method to write 1D array of doubles to file
-    *
-    * @param toFile
-    *                   Filename to write to.
-    *
-    * @param,data
+    * writeDoubles
+    *                   Static method to write data from file with
+    * @param toFile     The PrintWriter instance object to write files with.
+    * @para,data        The 2D array of doubles to read
     */
     public static void writeDoubles(PrintWriter toFile, double[] data){
         for (int i = 1; i< data.length + 1; i++) {
@@ -55,13 +52,11 @@ public class ArrayIOUtil extends IOUtil{
         toFile.close();
     }
 
-
    /**
-    * @writeDoubles
-    *
-    * @param toFile
-    *
-    * @para,data
+    * writeDoubles
+    *                   Static method to write data from file with
+    * @param toFile     The PrintWriter instance object to write files with.
+    * @para,data        The 2D array of doubles to read
     */
     public static void writeDoubles(PrintWriter toFile, double[][] data){
         for(int i=0; i<data.length;i++) {
@@ -71,43 +66,24 @@ public class ArrayIOUtil extends IOUtil{
         toFile.close();
     }
 
-
    /**
     * @readDoubles
-    *                   Static method to read data from file
+    *                   Static method to read data from file and return elements as an array.
+    *                   storing double instance elements
     *
     * @param scanned
-    *                   Scanner to read element from file
+    *                   Scanner to read element from file.
     * @param length
-    *                   Length of double array contained in file
+    *                   Length of double array contained in file.
     * @return
-    *                   Array of doubles
-    *
+    *                   Array of double element instances.
     */
     public static double[] readDoubles(Scanner scanned, int length) {
         double[] data = new double[length];
+
         for (int i = 0; i < length; i++) {
             data[i] = 0; // init each element in array
-            data[i] = IOUtil.skipToDouble(scanned); //read only double
-        }
-        return data;
-    }
-
-   /**
-    * @readDouble
-    *
-    * @param
-    *
-    *
-    * @return
-    *
-    */
-    public static double[][] readDoubles(Scanner scanned, int rows, int columns){
-        double[][] data = new double[rows][columns];
-        for (int i= 0; i < data.length;i++) {
-            for (int j= 0; j < data[1].length;j++) {
-                data[i][j] = IOUtil.skipToDouble(scanned); //TODO check
-            }
+            data[i] = IOUtil.skipToDouble(scanned); //read only doubles
         }
         return data;
     }
