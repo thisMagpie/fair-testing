@@ -1,0 +1,7 @@
+This file holds the input data to use for the following system of trials
+a) Edinburgh Physics Population Likelyhood of Success
+b) Predicted Individual Student Ability to Pass
+
+Number of Trials                         = 24
+Predicted Pecentage Grade on Course      = 60
+Standard Error On Predicted              = 9.8
