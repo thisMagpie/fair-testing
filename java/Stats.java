@@ -1,10 +1,5 @@
 /**
- * StatsUtil.java
- *
- * This file is a part of a program which serves as a utility for prediction
- * and data analysis of experimental and simulated data
- *
- * Copyright (C) 2012-2014  Magdalen Berns <m.berns@sms.ed.ac.uk>
+ * Copyright (C) 2012-2014  Magdalen Berns <http://thismagpie.com>
  *
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -18,18 +13,20 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>
  *
  */
-public class StatsUtil{
+public class Stats {
 
 /**
- * StatsUtil.java
+ * Stats.java
  * 
- * A Utility class for Statistical Operations with data.
+ * This file is a part of a program which serves as a utility for prediction
+ * and data analysis of experimental and simulated data
  *
  * @author Magdalen Berns
+ * @email <m.berns@sms.ed.ac.uk>
+ * @version 1.0
  */
 
     private static final double period = 2 * Math.PI;
-
     /**
      * mean
      *                   Works out the mean value of supplied data
@@ -88,25 +85,83 @@ public class StatsUtil{
     }
 
     /**
-     * variance
-     *                  Works out the difference of least squares fit
+     * standardDeviation
+     *                  Works out the Standard Deviation
      * @param data
      *                  The data being analysed
      * @param mean
      *                  The mean of the data
      *
      * @return
-     *                  The sum of all the variances as a double
+     *                  The the biased Standard Deviation as a double
      */
-    public static double variance(double[] data, double mean){
+    public static double standardDeviation(double[] data, double mean){
         double variance = 0.0;
         for (int i = 0; i < data.length; i++) variance += Math.pow((data[i] - mean), 2);
-        return variance;
+        return Math.sqrt(variance) / ((double)data.length);
     }
 
     /**
-     * standardDeviation
-     *                        Works out the standard deviation of least squares fit
+     * s2
+     *                  Works out the difference of least squares squares on a single datapoint
+     * @param dataPoint An individual data point from an array of data
+     * @param mean      The mean of the data
+     *
+     * @return          The variances of a single datapoint a double
+     */
+    public static double s2(double dataPoint, double mean) {
+        return Math.pow((dataPoint - mean), 2);
+    }
+
+    /**
+     * s2               Works out the biased difference of least squares fit
+     * @param data
+     *                  A 1D array of data
+     * @param mean      The mean of the data
+     *
+     * @return          The biased variance squared double
+     */
+    public static double s2(double[] data, double mean) {
+        double s2 = 0;
+        for(int i=0; i<data.length; i++) {
+            s2 += Math.pow((data[i] - mean), 2);
+        }
+        return s2/data.length;
+    }
+
+    /**
+     * s2Unbiased       Works out the unbiased difference of least squares fit
+     * @param data
+     *                  An individual data point from an array of data
+     * @param mean
+     *                  The mean of the data
+     *
+     * @return
+     *                  The sum of all the variances as a double
+     */
+    public static double s2Unbiased(double[] data, double mean) {
+        double s2 = 0;
+        for(int i=0; i<data.length; i++) {
+            s2 += Math.pow((data[i] - mean), 2);
+        }
+        return s2 /(data.length - 1);
+    }
+
+    /**
+     * s
+     *                  Works out the difference of least squares fit
+     * @s2              The biased or unbiased variance
+     * @return
+     *                  Standard Error on the Mean
+     */
+    public static double s(double s2) {
+        return Math.sqrt(s2);
+    }
+    /**
+     * standardError
+     *                        Works out the standard deviation of the sampling distribution based
+                              upon the individual deviations
+
      * @param variance
      *                        The variance of the data being analysed
      * @param n
@@ -115,10 +170,12 @@ public class StatsUtil{
      * @return
      *                        The the standard deviation of least squares fit as a double
      */
-    public static double standardDeviation(double variance, int n){
-        double stdDev = 0.0;
-        if(n > 0) stdDev = Math.sqrt(variance) / n;
-        return stdDev;
+    public static double standardError(double[] data, double mean) {
+        double stdError = 0.0;
+        for(int i=0; i<data.length; i++) {
+            if(data.length > 0) stdError = s2(data[i], mean) / Math.sqrt(data.length);
+        }
+        return stdError;
     }
 
     /**
@@ -191,7 +248,7 @@ public class StatsUtil{
     }
 
     /**
-     * standardError
+     * standardDeviation
      *                  Gives the residual sum of squares.
      * @param data
      *                  Array of doubles holding the x and y values in [i][0]
@@ -201,10 +258,25 @@ public class StatsUtil{
      * @return
      *                  Standard error in mean of y as a double value
      */
-    public static double standardError(double[][] data, double[] fit) {
+    public static double standardDeviation(double[][] data, double[] fit) {
         double rss = 0.0; //standard error in mean i.e. residual sum of squares
         for (int i = 0; i < data.length; i++) rss += (fit[i] - data[i][1]) * (fit[i] - data[i][1]);
         return rss;
+    }
+
+    /**
+     * standardError
+     *                              Gives the residual sum of squares.
+     * @param N
+     *                              Number of Samples as an integer
+     *
+     * @param standardDeviation
+     *                              standard deviation from mean
+     * @return
+     *                              Standard variance of mean i.e. as a double
+     */
+    public static double standardError(int N, double s2) {
+        return Math.sqrt(s2 /(double)N);
     }
 
     /**
@@ -323,7 +395,7 @@ public class StatsUtil{
    /**
     * gaussian
     *                         Transform data into a normalised gaussian
-    * @param numberOfSamples
+    * @param N
     *                         sample number appropriate to size of original data array
     * @param variance                    
     *                         variance of data
@@ -332,49 +404,22 @@ public class StatsUtil{
     * @return
     *                         normalised gaussian in the form of 1D array of doubles
     */
-    public static double[] gaussian(int numberOfSamples, double variance, double mean) {
-        double[] gaussian = new double[numberOfSamples];
+    public static double[] gaussian(double[] data, double mean) {
+        int N = data.length;
+        double[] gaussian = new double[N];
         double tempGaussian= 0.0;
 
-        for (int i=0; i < numberOfSamples; i++) {
-            gaussian[i] = Math.sqrt(1 / period * variance) * (Math.exp(- Math.pow((i-mean), 2) / (2 * variance)));
+        for (int i=0; i < N; i++) {
+            gaussian[i] = (1.0 / Math.sqrt( s2(data, mean)*period)) * Math.exp((float) (-1.0 * s2(data[i], mean)) / 2* s2(data, mean));
             tempGaussian += gaussian[i];
         }
         
-        for (int i=0; i< numberOfSamples; i++){
+        for (int i = 0; i< N; i++){
             gaussian[i] /= tempGaussian;
         }
         return gaussian;
     }
 
-   /**
-    * gaussian
-    *                               Transform data into a normalised gaussian 3 parameter model
-    *                               with variables <code>x, \mu</code> and <code>sigma</code>
-    *                               respectively where <code>sigma = Math.pow((data[i] - mean), 2);</code>
-    * @param data
-    *                               data array of doubles
-    * @param standard deviation
-    *                               variance of data
-    * @param variance
-    *                               variance of <code>Math.pow((data[i] - mean), 2);</code>
-    * @return
-    *                               normalised gaussian in the form of 1D array of doubles
-    */
-    public static double[] gaussian(double[] data, double standardDeviation, double variance) {
-        double[] gaussian = new double[data.length];
-        double tempGaussian= 0.0;
-
-        for (int i=0; i < data.length; i++) {
-            gaussian[i] = 1 / (standardDeviation * Math.sqrt(period * 2)) * variance / (2 * Math.pow(standardDeviation, 2));
-            tempGaussian += gaussian[i];
-        }
-        
-        for (int i=0; i< data.length; i++) {
-            gaussian[i] /= tempGaussian;
-        }
-        return gaussian;
-    }
 
     /**
      * convolve
@@ -384,16 +429,16 @@ public class StatsUtil{
      *                          1D integer data array to be smoothed
      * @param gaussian
      *                          normalised gaussian in the form of 1D array of doubles for y axis
-     * @param numberOfSamples
+     * @param N
      *                          sample number appropriate to size of original data array
      * @return
      *                          Smoothed data as array of doubles 
      */ 
-    public static double[] convolve(int[] data, double[] gaussian, int numberOfSamples){
-        double convolved[] = new double[data.length - (numberOfSamples + 1)];
+    public static double[] convolve(int[] data, double[] gaussian, int N){
+        double convolved[] = new double[data.length - (N + 1)];
         for (int i=0; i < convolved.length; i++){
             convolved[i] = 0.0;
-            for (int j = i, k = 0; j < i + numberOfSamples; j++, k++){
+            for (int j = i, k = 0; j < i + N; j++, k++){
                 convolved[i] +=  data[j] * gaussian[k];
             }
         }

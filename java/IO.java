@@ -16,7 +16,7 @@
 import java.util.Scanner;
 import java.io.*;
 
-public class IOUtil {
+public class IO {
 
 /**
  * This file provides a library of static methods for handling common

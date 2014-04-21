@@ -28,48 +28,68 @@ public class RunTest {
  * @version 1.0
  */
 
-    public static void main(String[] argsv) throws IOException,
-                                                   FileNotFoundException {
+    public static void main(String[] argsv) throws IOException, FileNotFoundException {
+        int N = 24;
+        double err = 2.0;
 
-        String input                                    = "input/";
-        String output                                   = "../latex/data";
-        String population                               = "recorded-population-grades.dat";
-        Scanner scanPopulation                          = IOUtil.scanFrom(population);
+        System.out.printf("Welcome to Magdalen Berns' Honours Algorithm Tester Program.'");
+        System.out.printf("Enter mean:\n");
+        double mean                                     = Double.parseDouble(IO.typedInput());
 
-        PrintWriter outputPopulation                    = new PrintWriter(output + "population.dat");
-        PrintWriter outputMaster10                      = new PrintWriter(output + "master10.dat");
+        String input                                    = "../latex/data/";
+        String output                                   = "../latex/images/";
 
-        String master10Credits                          = "recorded-individual-master.dat";
-        String master20Credits                          = "recorded-individual-master-20.dat";
-        Scanner scanMaster10                            = IOUtil.scanFrom(master10Credits);
-        Scanner scanMaster20                            = IOUtil.scanFrom(master20Credits);
+        String population                               = "population.dat";
+        String master                                   = "master.dat";
+        String transfer                                 = "transfer.dat";
+        String finalYear                                = "finalYear.dat";
+        String ordinary                                 = "ordinary.dat";
+        String ordinaryPre                              = "ordinarypre.dat";
+        String bachelor                                 = "bachelors.dat";
+        String phd                                      = "phd.dat";
+        String engineer                                 = "engineer.dat";
 
-        //retrieve scanner and length
-        double[] recordedPopulationResults = ArrayIOUtil.readDoubles(scanPopulation,
-                                                                     IOUtil.skipToInt(scanPopulation));
-        double[] recordedMasterResults = ArrayIOUtil.readDoubles(scanPopulation,
-                                                                 IOUtil.skipToInt(scanMaster10));
+        StatsIO.write(population, IO.writeTo(output + population),
+                                  ArrayIO.readDoubles(IO.scanFrom(input + population), N)
+                                 );
+        StatsIO.write(master, IO.writeTo(output + master),
+                                  ArrayIO.readDoubles(IO.scanFrom(input + master), N)
+                                  );
+        StatsIO.write(transfer, IO.writeTo(output + transfer),
+                                  ArrayIO.readDoubles(IO.scanFrom(input + transfer), N)
+                                  );
+        StatsIO.write(finalYear, IO.writeTo(output + finalYear),
+                                  ArrayIO.readDoubles(IO.scanFrom(input + finalYear), N)
+                                  );
+        StatsIO.write(ordinary, IO.writeTo(output + ordinary),
+                                  ArrayIO.readDoubles(IO.scanFrom(input + ordinary), N)
+                                  );
+        StatsIO.write(ordinaryPre, IO.writeTo(output + ordinaryPre),
+                                  ArrayIO.readDoubles(IO.scanFrom(input + ordinaryPre), N)
+                                  );
+        StatsIO.write(bachelor, IO.writeTo(output + bachelor),
+                                  ArrayIO.readDoubles(IO.scanFrom(input + bachelor), N)
+                                  );
+        StatsIO.write(phd, IO.writeTo(output + phd),
+                                  ArrayIO.readDoubles(IO.scanFrom(input + phd), N)
+                                  );
+        StatsIO.write(engineer, IO.writeTo(output + engineer),
+                                  ArrayIO.readDoubles(IO.scanFrom(input + engineer), N)
+                                  );
 
-        // write out results and print to terminal and concatinate to organise output file dir location
-        writeDistribution(outputPopulation, recordedPopulationResults);
-        writeDistribution(outputMaster10, recordedMasterResults);
-    }
+        double variances                                = 0.0;
+        
+        double[] score                                  = new double[N];
+        System.out.print("\n\nModelled Averages\n\n");
+        for (int i=0; i < N; i++){
+            variances =  err * Math.random();
+            if(Math.random() >0.49) {
+                variances = -1.0 * variances;
 
-    public static void writeDistribution(PrintWriter writeTo, double data[]) { //TODO give it a class
-        double mean                 = StatsUtil.mean(data);
-        double variance             = StatsUtil.variance(data, mean);
-        double standardDeviation    = StatsUtil.standardDeviation(
-                                                        variance,
-                                                        data.length);
-
-        double[] gaussian = StatsUtil.gaussian(data.length, variance, mean);
-
-        System.out.println("The full data range\nMean =" +
-                            mean +"\nVariance = " +
-                            variance + "\nStandard Deviation " +
-                            standardDeviation);
-
-        ArrayIOUtil.writeDoubles(writeTo, gaussian);
-        ArrayIOUtil.printDoubles(gaussian);
+            }
+            score[i] = mean + variances;
+            System.out.print(score[i] + " \n");
+        }
+        StatsIO.write("Model", IO.writeTo(output + "model.dat"), score);
     }
 }

@@ -16,15 +16,16 @@
 import java.io.*;
 import java.util.Scanner;
 
-public class ArrayIOUtil extends IOUtil {
+public class ArrayIO extends IO {
 
 /**
- * @author Magdalen Berns Copyright (C) 2014
+ * This file is a part of a program which serves as a utility for prediction
+ * and data analysis of experimental and simulated data
+ *
+ * @author Magdalen Berns
  * @email <m.berns@sms.ed.ac.uk>
  * @version 1.0
  *
- * This file is a part of a program which serves as a utility for prediction
- * and data analysis of experimental and simulated data
  */
 
    /**
@@ -67,10 +68,9 @@ public class ArrayIOUtil extends IOUtil {
     }
 
    /**
-    * @readDoubles
+    * readDoubles
     *                   Static method to read data from file and return elements as an array.
     *                   storing double instance elements
-    *
     * @param scanned
     *                   Scanner to read element from file.
     * @param length
@@ -83,7 +83,7 @@ public class ArrayIOUtil extends IOUtil {
 
         for (int i = 0; i < length; i++) {
             data[i] = 0; // init each element in array
-            data[i] = IOUtil.skipToDouble(scanned); //read only doubles
+            data[i] = IO.skipToDouble(scanned); //read only doubles
         }
         return data;
     }
